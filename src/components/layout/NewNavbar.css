@@ -586,8 +586,7 @@ body {
     color: #0f172a;
     display: flex;
     align-items: center;
-    padding-left: 1rem; /* Added padding to the left */
-    border-right: 2px solid #000; /* Added right border */
+    padding-left: 1rem; /* Added right border */
     flex: 1; /* Allow title to take remaining space */
   }
 
@@ -601,8 +600,6 @@ body {
     background-color: #4FB3FF;
     padding: 12px;
     cursor: pointer;
-    border-left: 2px solid #000; /* Added left border */
-    border-right: 2px solid #000; /* Added right border */
     transition: background-color 0.3s ease;
   }
 

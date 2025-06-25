@@ -123,7 +123,7 @@ export const HeroSection = (_props: HeroSectionProps) => {
         {/* Left side - Scrollable content */}
         <div
           ref={contentWrapRef}
-          className={`relative w-full py-0 pl-8 sm:pl-12 items-center h-[calc(100dvh)] max-h-screen overflow-y-auto scrollbar-none scroll-p-8 -z-1`}
+          className={`relative w-full py-0 pl-4 sm:pl-12 items-center h-[calc(100dvh)] max-h-screen overflow-y-auto scrollbar-none scroll-p-4 -z-1`}
         >
           {/* First content section */}
           <div className="min-h-[60vh] flex flex-col justify-center py-6 scroll-snap-start mb-8 relative">
@@ -141,7 +141,21 @@ export const HeroSection = (_props: HeroSectionProps) => {
                 </div>
               </div>
             )}
-            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible mt-40">
+            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
+              {/* University info for mobile */}
+              {isMobile && (
+                <div className="flex items-center mb-4 mt-[-20px]">
+                  <img
+                    src="/images/dsu.png"
+                    alt="DSU Logo"
+                    className="w-10 h-10 sm:w-14 sm:h-14 object-contain mr-2 sm:mr-4"
+                  />
+                  <div className="flex flex-col">
+                    <h3 className="text-[15px] sm:text-[18px] font-semibold m-0 text-black">Dayananda Sagar University</h3>
+                    <p className="text-[12px] sm:text-[14px] mt-1 mb-0 text-[#333]">School of Engineering, Harohalli</p>
+                  </div>
+                </div>
+              )}
               <div className="flex flex-col items-center mb-3 max-w-full overflow-visible">
                 <div className="flex flex-col items-center max-w-full overflow-hidden">
                   <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight m-0 text-black text-center max-w-full">DSU</h1>
@@ -176,9 +190,9 @@ export const HeroSection = (_props: HeroSectionProps) => {
 
           {/* Video section for mobile/tablet */}
           {isMobile && (
-            <div className="min-h-[50vh] flex flex-col justify-center items-center py-2 scroll-snap-start mb-4 relative">
-              <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
-                <div className="relative w-full aspect-video flex items-center justify-center">
+            <div className="min-h-[30vh] flex flex-col justify-center items-center py-1 scroll-snap-start mb-3 relative">
+              <div className="max-w-full w-full sm:w-[600px] p-2 sm:p-4 bg-white/95 rounded-xl mb-3 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
+                <div className="relative w-full aspect-[4/3] flex items-center justify-center">
                   <video
                     autoPlay
                     loop
