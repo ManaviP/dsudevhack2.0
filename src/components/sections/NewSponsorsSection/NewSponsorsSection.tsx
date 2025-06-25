@@ -182,7 +182,7 @@ export const NewSponsorsSection = () => {
 
           {/* Community Partners heading */}
           <div className="sponsors-grid-heading">
-            <h4>Community Partners</h4>
+            <h4>Platform partner</h4>
           </div>
 
           {/* Bottom row - 7 smaller sponsors */}
@@ -233,24 +233,7 @@ export const NewSponsorsSection = () => {
 
 
 
-        {/* Become a Sponsor button */}
-        <div className="become-sponsor-container">
-          <a
-            href="https://www.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="become-sponsor-button"
-          >
-            <div className="become-sponsor-button-text">
-              Become a sponsor
-            </div>
-            <div className="arrow-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon">
-                <path d="M7 17l10-10M7 7h10v10" />
-              </svg>
-            </div>
-          </a>
-        </div>
+        
       </div>
     </section>
   );
