@@ -41,7 +41,7 @@ export const TracksSection = () => {
       color: 'green',
       description: 'Innovate for a greener future: energy, environment, and sustainable solutions.',
       bgClass: 'sustainability-bg',
-      icon: <img src="/images/sus.png" alt="Sustainability" className="track-icon-img" />,
+      icon: <img src="/images/sustainability.png" alt="Sustainability" className="track-icon-img" />,
       sponsor: 'Eco Foundation',
     },
     {
@@ -65,7 +65,7 @@ export const TracksSection = () => {
       color: 'blue',
       description: 'Decentralize the web: blockchain, smart contracts, and dApps.',
       bgClass: 'web3-bg',
-      icon: <span className="track-icon-emoji">⛓️</span>,
+      icon: <img src="/images/web.png" alt="Web3 + Blockchain" className="track-icon-img" />,
       sponsor: 'Block Innovators',
     },
     {
