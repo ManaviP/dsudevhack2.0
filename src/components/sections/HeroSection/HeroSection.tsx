@@ -123,7 +123,7 @@ export const HeroSection = (_props: HeroSectionProps) => {
         {/* Left side - Scrollable content */}
         <div
           ref={contentWrapRef}
-          className={`relative w-full py-0 pl-4 sm:pl-12 items-center h-[calc(100dvh)] max-h-screen overflow-y-auto scrollbar-none scroll-p-4 -z-1`}
+          className={`relative w-full py-0 pl-8 sm:pl-12 items-center h-[calc(100dvh)] max-h-screen overflow-y-auto scrollbar-none scroll-p-8 -z-1`}
         >
           {/* First content section */}
           <div className="min-h-[60vh] flex flex-col justify-center py-6 scroll-snap-start mb-8 relative">
@@ -135,27 +135,13 @@ export const HeroSection = (_props: HeroSectionProps) => {
                   alt="DSU Logo"
                   className="w-12 h-12 sm:w-20 sm:h-20 object-contain mr-2 sm:mr-4"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-1 sm:gap-2">
                   <h3 className="text-[17px] sm:text-[20px] font-semibold m-0 text-black">Dayananda Sagar University</h3>
                   <p className="text-[13px] sm:text-[15px] mt-1 mb-0 text-[#333]">School of Engineering, Harohalli</p>
                 </div>
               </div>
             )}
-            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
-              {/* University info for mobile */}
-              {isMobile && (
-                <div className="flex items-center mb-4 mt-[-20px]">
-                  <img
-                    src="/images/dsu.png"
-                    alt="DSU Logo"
-                    className="w-10 h-10 sm:w-14 sm:h-14 object-contain mr-2 sm:mr-4"
-                  />
-                  <div className="flex flex-col">
-                    <h3 className="text-[15px] sm:text-[18px] font-semibold m-0 text-black">Dayananda Sagar University</h3>
-                    <p className="text-[12px] sm:text-[14px] mt-1 mb-0 text-[#333]">School of Engineering, Harohalli</p>
-                  </div>
-                </div>
-              )}
+            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-transparent rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible mt-40">
               <div className="flex flex-col items-center mb-3 max-w-full overflow-visible">
                 <div className="flex flex-col items-center max-w-full overflow-hidden">
                   <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight m-0 text-black text-center max-w-full">DSU</h1>
@@ -190,34 +176,29 @@ export const HeroSection = (_props: HeroSectionProps) => {
 
           {/* Video section for mobile/tablet */}
           {isMobile && (
-            <div className="min-h-[30vh] flex flex-col justify-center items-center py-1 scroll-snap-start mb-3 relative">
-              <div className="max-w-full w-full sm:w-[600px] p-2 sm:p-4 bg-white/95 rounded-xl mb-3 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
+            <div className="min-h-[35vh] flex flex-col justify-center items-center py-1 scroll-snap-start mb-2 relative">
+              <div className="max-w-full w-full sm:w-[600px] p-1.5 sm:p-3 bg-transparent rounded-xl mb-2 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
                 <div className="relative w-full aspect-[4/3] flex items-center justify-center">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                  <img
+                    src="/images/images/new-svg-unscreen.gif"
+                    alt="DSU DEVHACK"
                     className="w-full h-full object-contain"
                     style={{ 
-                      filter: 'brightness(1.05) contrast(1.05) saturate(1.1)',
+                      filter: 'brightness(1.05) contrast(1.05) saturate(1.1',
                       imageRendering: 'crisp-edges',
                       WebkitBackfaceVisibility: 'hidden',
                       backfaceVisibility: 'hidden'
                     }}
-                  >
-                    <source src="/images/images/new svg.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  />
                 </div>
               </div>
             </div>
           )}
 
           {/* About section */}
-          <div className="min-h-[50vh] flex flex-col justify-center py-4 scroll-snap-start mb-6 relative opacity-100 visible">
-            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
-              <div className="flex lg:items-start lg:flex-row flex-col-reverse items-center gap-3 sm:gap-6">
+          <div className="min-h-[35vh] flex flex-col justify-center py-1.5 scroll-snap-start mb-3 relative opacity-100 visible">
+            <div className="max-w-full w-full sm:w-[600px] p-1.5 sm:p-3 bg-transparent rounded-xl mb-2 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
+              <div className="flex lg:items-start lg:flex-row flex-col-reverse items-center gap-2 sm:gap-3">
                 <div className="flex-1">
                   <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 text-black">About DSU DEVHACK 2025</h2>
                   <p className="text-base sm:text-lg leading-relaxed mb-3 sm:mb-6 text-[#333333]">
@@ -236,9 +217,9 @@ export const HeroSection = (_props: HeroSectionProps) => {
             </div>
           </div>
 
-          {/* Why Participate section */}
-          <div className="min-h-[50vh] flex flex-col justify-center py-4 scroll-snap-start mb-6 relative opacity-100 visible">
-            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-white/95 rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
+            {/* Why Participate section */}
+            <div className="min-h-[50vh] flex flex-col justify-center py-4 scroll-snap-start mb-6 relative opacity-100 visible">
+            <div className="max-w-full w-full sm:w-[600px] p-3 sm:p-6 bg-transparent rounded-xl mb-4 transition-transform duration-300 hover:-translate-y-1 relative overflow-visible">
               <div className="flex items-center lg:items-start lg:flex-row flex-col-reverse gap-3 sm:gap-6">
                 <div className="flex-1">
                   <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 text-black">Why Participate?</h2>
@@ -267,27 +248,22 @@ export const HeroSection = (_props: HeroSectionProps) => {
             className="relative w-full h-screen flex flex-col justify-start items-center overflow-hidden"
           >
             {/* Desktop view - Video */}
-            <div className="relative w-full h-full flex items-start justify-center">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-[90%] h-[90%] object-contain"
+            <div className="relative w-full h-full flex items-start justify-center ">
+              <img
+                src="/images/images/new-svg-unscreen.gif"
+                alt="DSU DEVHACK"
+                className="w-[80%] h-[80%] object-contain"
                 style={{ 
-                  filter: 'brightness(1.05) contrast(1.05) saturate(1.1)',
+                  filter: 'brightness(1.05) contrast(1.05) saturate(1.1',
                   imageRendering: 'crisp-edges',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden'
                 }}
-              >
-                <source src="/images/images/new svg.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </div>
         )}
       </div>
     </section>
   );
-};
+}; 
