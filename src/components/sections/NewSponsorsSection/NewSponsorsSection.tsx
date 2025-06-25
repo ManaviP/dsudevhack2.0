@@ -21,10 +21,20 @@ export const NewSponsorsSection = () => {
   ];
 
   // Silver Sponsors (5 boxes)
-  const middleRowSponsors: SponsorLogo[] = [];
+  const middleRowSponsors: SponsorLogo[] = [
+    {
+      name: "ETH India",
+      logoUrl: "/sponsors/ethindia-light.svg",
+    },
+  ];
 
   // Community Partners (2 boxes)
-  const bottomRowSponsors: SponsorLogo[] = [];
+  const bottomRowSponsors: SponsorLogo[] = [
+    {
+      name: "Devfolio",
+      logoUrl: "/sponsors/Devfolio_Logo-White.png",
+    },
+  ];
 
 
 
