@@ -1,4 +1,3 @@
-
 import { MainLayout } from '../components/layout/MainLayout';
 import { HeroSection } from '../components/sections/HeroSection';
 import { OverviewSection } from '../components/sections/OverviewSection';
@@ -11,6 +10,7 @@ import { FAQPageSection } from '../components/sections/FAQPageSection';
 import { Footer } from '../components/layout/Footer';
 import { useTheme } from '../lib/theme-context';
 import Themes from '../components/themes';
+import { OrganisingTeamSection } from '../components/sections/OrganisingTeamSection';
 
 export const Home = () => {
   const { theme } = useTheme();
@@ -24,11 +24,12 @@ export const Home = () => {
 
       {/* All other sections without KeyboardCanvas */}
       <div className="relative w-full">
-        
+
         <TimeCapsuleSection />
         <PrizesSection />
         <TracksSection />
         <TimelineSection />
+        <OrganisingTeamSection />
         <NewSponsorsSection />
         <FAQPageSection />
 

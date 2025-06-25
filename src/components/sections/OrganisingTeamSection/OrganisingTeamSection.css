@@ -1,0 +1,12 @@
+.organising-team-section {
+    background-color: #f5f2e7;
+    padding-top: 6rem;
+    padding-bottom: 8rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark .organising-team-section {
+    background-color: #111827;
+}
+
+/* ...existing CSS... */

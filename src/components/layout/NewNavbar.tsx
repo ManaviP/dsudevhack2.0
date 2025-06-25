@@ -10,6 +10,7 @@ export const NewNavbar = () => {
     { name: 'Prizes', path: '/', sectionId: 'prizes' },
     { name: 'Themes', path: '/', sectionId: 'tracks' },
     { name: 'Timeline', path: '/', sectionId: 'timeline' },
+    { name: 'Organising Team', path: '/', sectionId: 'organising-team' },
     { name: 'Sponsors', path: '/', sectionId: 'sponsors' },
     { name: 'Archives', path: 'https://dsudevhack.tech/', sectionId: 'archives' },
     { name: 'FAQ', path: '/', sectionId: 'faq' },
@@ -59,7 +60,7 @@ export const NewNavbar = () => {
             {mobileMenuOpen ? (
               <div className="mobile-menu-x">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             ) : (
@@ -94,6 +95,9 @@ export const NewNavbar = () => {
               <div className="mobile-menu-row">
                 <Link to="/" className="mobile-menu-item" onClick={() => handleNavClick({ path: '/', sectionId: 'timeline' })}>
                   Timeline
+                </Link>
+                <Link to="/" className="mobile-menu-item" onClick={() => handleNavClick({ path: '/', sectionId: 'organising-team' })}>
+                  Organising Team
                 </Link>
                 <Link to="/" className="mobile-menu-item" onClick={() => handleNavClick({ path: '/', sectionId: 'sponsors' })}>
                   Sponsors
@@ -153,7 +157,7 @@ export const NewNavbar = () => {
           </Link>
         ))}
         <Link to="https://dsudevhack.tech"
-         className="nav-register">
+          className="nav-register">
           <div className="button-text__wrap">
             <div className="text-wrap__innner">
               <span className="p-medium u--fw-med">Register</span>
