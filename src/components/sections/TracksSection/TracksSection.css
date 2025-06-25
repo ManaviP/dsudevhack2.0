@@ -1,0 +1,471 @@
+@import '../common/SectionStyles.css';
+
+.tracks-section {
+  composes: section-container;
+  background: #f5f2e7;
+  padding-bottom: 0;
+  padding-bottom: 15rem;
+}
+
+.tracks-title {
+  composes: section-title;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #111;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.track-card {
+  border-radius: 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.04);
+  border: 2px solid #e5e5e5;
+  min-height: clamp(300px, 50vh, 340px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+  color: #111;
+  transition: all 0.3s ease;
+}
+
+.track-card:hover .track-arrow {
+  box-shadow: 0 0 8px currentColor;
+  transform: scale(1.02);
+}
+
+.track-card:hover .track-name {
+  text-shadow: 0 0 2px currentColor;
+}
+
+/* Grid background pattern - more visible */
+.track-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #b0b0b0 2px, transparent 1px), linear-gradient(#b0b0b0 2px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Box around the title and arrow - sharp corners */
+.track-header {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  background: #fff;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  margin: 1rem 1rem 0.25rem 1rem;
+  position: relative;
+  z-index: 1;
+  color: #111;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+  height: auto;
+  min-height: clamp(2.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.track-arrow {
+  color: #111;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  background: #f5f2e7;
+  border: 1px solid black;
+  border-radius: 0;
+  width: clamp(2.5rem, 4vw, 3.25rem);
+  height: clamp(2.5rem, 4vw, 3.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -0.25rem;
+  margin-right: 1rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  font-weight: 700;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.track-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111 !important;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* Remove any default color styles */
+.sustainability-bg .track-name,
+.healthcare-bg .track-name,
+.aiml-bg .track-name,
+.web3-bg .track-name,
+.iot-bg .track-name,
+.open-bg .track-name {
+  color: #111 !important;
+}
+
+/* Track name colors - only on hover */
+.sustainability-bg:hover .track-name {
+  color: #2e7d32 !important;
+}
+
+.healthcare-bg:hover .track-name {
+  color: #c62828 !important;
+}
+
+.aiml-bg:hover .track-name {
+  color: #4527a0 !important;
+}
+
+.web3-bg:hover .track-name {
+  color: #1565c0 !important;
+}
+
+.iot-bg:hover .track-name {
+  color: #00897b !important;
+}
+
+.open-bg:hover .track-name {
+  color: #ef6c00 !important;
+}
+
+/* White box around icon, description, and sponsor */
+.track-content-box {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+  border-radius: 0;
+  margin: 0.5rem 1rem 1rem 1rem;
+  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  flex: 1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.track-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(3rem, 5vw, 4rem);
+  margin: 0 0 0.75rem 0;
+  z-index: 1;
+  color: #111;
+  transition: all 0.3s ease;
+  min-height: clamp(150px, 25vh, 180px);
+}
+
+.track-icon-img {
+  width: clamp(160px, 25vw, 240px);
+  height: clamp(160px, 25vw, 240px);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Remove specific larger sizes since we're standardizing */
+.healthcare-bg .track-icon-img,
+.aiml-bg .track-icon-img,
+.iot-bg .track-icon-img,
+.open-bg .track-icon-img,
+.web3-bg .track-icon-img {
+  width: clamp(160px, 25vw, 240px);
+  height: clamp(160px, 25vw, 240px);
+}
+
+/* Sustainability icon smaller size */
+.sustainability-bg .track-icon-img {
+  width: clamp(140px, 20vw, 180px);
+  height: clamp(140px, 20vw, 180px);
+}
+
+.track-card:hover .track-icon-img {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.track-desc {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #111;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+/* Add extra margin for Sustainability description */
+.sustainability-bg .track-desc {
+  margin-top: clamp(2rem, 4vw, 3.3rem);
+}
+
+/* Specific backgrounds for each card */
+.defi-bg {
+  background: #bcb6ff;
+}
+
+.infra-bg {
+  background: #ffd6f6;
+}
+
+.ai-bg {
+  background: #b6e2c6;
+}
+
+.crypto-bg {
+  background: #b6d6ff;
+}
+
+.degen-bg {
+  background: #fff7b6;
+}
+
+.payments-bg {
+  background: #ffe2b6;
+}
+
+.ent-bg {
+  background: #ffb6b6;
+}
+
+.explore-bg {
+  background: #b6fff2;
+}
+
+.storage-bg {
+  background: #e0e0e0;
+}
+
+.arrow-defi-bg {
+  background: #bcb6ff;
+}
+
+.arrow-infra-bg {
+  background: #ffd6f6;
+}
+
+.arrow-ai-bg {
+  background: #b6e2c6;
+}
+
+.arrow-crypto-bg {
+  background: #b6d6ff;
+}
+
+.arrow-degen-bg {
+  background: #fff7b6;
+}
+
+.arrow-payments-bg {
+  background: #ffe2b6;
+}
+
+.arrow-ent-bg {
+  background: #ffb6b6;
+}
+
+.arrow-explore-bg {
+  background: #b6fff2;
+}
+
+.arrow-storage-bg {
+  background: #e0e0e0;
+}
+
+.sustainability-bg {
+  background: #b6e2c6;
+}
+
+.healthcare-bg {
+  background: #ffd6d6;
+}
+
+.aiml-bg {
+  background: #d6c6ff;
+}
+
+.web3-bg {
+  background: #b6d6ff;
+}
+
+.iot-bg {
+  background: #b6fff2;
+}
+
+.open-bg {
+  background: #ffe2b6;
+}
+
+.arrow-sustainability-bg {
+  background: #b6e2c6;
+  color: #2e7d32;
+}
+
+.arrow-healthcare-bg {
+  background: #ffd6d6;
+  color: #c62828;
+}
+
+.arrow-aiml-bg {
+  background: #d6c6ff;
+  color: #4527a0;
+}
+
+.arrow-web3-bg {
+  background: #b6d6ff;
+  color: #1565c0;
+}
+
+.arrow-iot-bg {
+  background: #b6fff2;
+  color: #00897b;
+}
+
+.arrow-open-bg {
+  background: #ffe2b6;
+  color: #ef6c00;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 1200px) {
+  .tracks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .tracks-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .track-card {
+    min-height: auto;
+  }
+
+  .track-header {
+    font-size: 1.75rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .track-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
+    margin-left: -0.15rem;
+    margin-right: 0.75rem;
+  }
+
+  .track-name {
+    font-size: 1.25rem;
+  }
+
+  .track-icon {
+    min-height: 150px;
+  }
+
+  .track-icon-img {
+    width: 195px;
+    height: 195px;
+  }
+
+  /* Standardize all mobile sizes */
+  .healthcare-bg .track-icon-img,
+  .aiml-bg .track-icon-img,
+  .iot-bg .track-icon-img,
+  .open-bg .track-icon-img,
+  .web3-bg .track-icon-img {
+    width: 195px;
+    height: 195px;
+  }
+
+  /* Sustainability icon smaller size on mobile */
+  .sustainability-bg .track-icon-img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tracks-section {
+    padding-bottom: 10rem;
+  }
+
+  .track-header {
+    padding: 0.5rem 0.75rem;
+    margin: 0.75rem 0.75rem 0.25rem 0.75rem;
+  }
+
+  .track-content-box {
+    margin: 0.5rem 0.75rem 0.75rem 0.75rem;
+    padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  }
+}
+
+.track-icon-emoji {
+  font-size: clamp(50px, 6vw, 100px);
+  display: inline-block;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+  line-height: 1;
+}
+
+.track-card:hover .track-icon-emoji {
+  animation: pulse 1.5s ease-in-out infinite;
+}
