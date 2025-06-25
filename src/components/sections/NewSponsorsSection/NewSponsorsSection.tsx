@@ -233,7 +233,6 @@ export const NewSponsorsSection = () => {
 
 
 
-        
       </div>
     </section>
   );

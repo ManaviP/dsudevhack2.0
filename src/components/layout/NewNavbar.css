@@ -598,6 +598,7 @@ body {
     width: 60px; /* Increased from 50px to match navbar height */
     height: 60px; /* Increased from 50px to match navbar height */
     background-color: #4FB3FF;
+    border: 3.5px solid #000;
     padding: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease;
