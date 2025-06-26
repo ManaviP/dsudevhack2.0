@@ -210,8 +210,8 @@
 }
 
 .track-icon-img {
-  width: clamp(160px, 25vw, 240px);
-  height: clamp(160px, 25vw, 240px);
+  width: clamp(110px, 15vw, 150px);
+  height: clamp(110px, 15vw, 150px);
   object-fit: contain;
   transition: all 0.3s ease;
   animation: float 3s ease-in-out infinite;
@@ -222,15 +222,10 @@
 .aiml-bg .track-icon-img,
 .iot-bg .track-icon-img,
 .open-bg .track-icon-img,
-.web3-bg .track-icon-img {
-  width: clamp(160px, 25vw, 240px);
-  height: clamp(160px, 25vw, 240px);
-}
-
-/* Sustainability icon smaller size */
+.web3-bg .track-icon-img,
 .sustainability-bg .track-icon-img {
-  width: clamp(140px, 20vw, 180px);
-  height: clamp(140px, 20vw, 180px);
+  width: clamp(110px, 15vw, 150px);
+  height: clamp(110px, 15vw, 150px);
 }
 
 .track-card:hover .track-icon-img {
@@ -421,8 +416,8 @@
   }
 
   .track-icon-img {
-    width: 195px;
-    height: 195px;
+    width: 120px;
+    height: 120px;
   }
 
   /* Standardize all mobile sizes */
@@ -430,15 +425,10 @@
   .aiml-bg .track-icon-img,
   .iot-bg .track-icon-img,
   .open-bg .track-icon-img,
-  .web3-bg .track-icon-img {
-    width: 195px;
-    height: 195px;
-  }
-
-  /* Sustainability icon smaller size on mobile */
+  .web3-bg .track-icon-img,
   .sustainability-bg .track-icon-img {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
   }
 }
 
