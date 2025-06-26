@@ -17,31 +17,43 @@ import "./OrganisingTeamSection.css";
 const team = {
     professorCoordinator: {
         emoji: "👨‍🏫",
-        role: "Professor Co-ordinator",
+        role: "Faculty Coordinator",
+        name: "Dr. Bipin Kumar Rai",
+        designation: "Professor, CSE"
     },
     studentCoordinators: [
         {
             emoji: "🧑‍🎓",
             role: "Student Coordinator",
+            name: "Utkarsh Priye (Jha)",
+            contact: "99396 35206"
         },
         {
             emoji: "🧑‍🎓",
             role: "Student Coordinator",
+            name: "Ritvik Vasundh",
+            contact: "82996 86568"
+        },
+        {
+            emoji: "🧑‍🎓",
+            role: "Student Coordinator",
+            name: "Jiya Patel",
+            contact: "73832 32239"
         },
     ],
     webTeamHeads: [
         {
             emoji: "💻",
             role: "Web Team Head",
-        },
-        {
-            emoji: "💻",
-            role: "Web Team Head",
+            name: "Rahul Jadvani",
+            contact: "6362050449"
         },
     ],
     designTeamHead: {
         emoji: "🎨",
         role: "Design Team Head",
+        name: "Design Team Head",
+        contact: "Contact Info"
     },
     allMembers: [
         { emoji: "🧑‍🎓", label: "Team Member 1" },
@@ -89,28 +101,36 @@ export const OrganisingTeamSection = () => {
                             {team.professorCoordinator.emoji}
                         </span>
                         <p className="text-blue-600 font-medium">{team.professorCoordinator.role}</p>
+                        <p className="text-gray-800 font-semibold mt-1 text-lg">{team.professorCoordinator.name}</p>
+                        <p className="text-gray-600 text-sm">{team.professorCoordinator.designation}</p>
                     </div>
                     {team.studentCoordinators.map((member, idx) => (
                         <div className="team-card text-center" key={idx}>
                             <span className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-green-500 bg-white" style={{ height: 'auto' }}>
-                                {member.emoji}
+                                <img src="/images/coords.png" alt="Coordinator" className="w-full h-full object-cover rounded-full" />
                             </span>
                             <p className="text-green-600 font-medium">{member.role}</p>
+                            <p className="text-gray-800 font-semibold mt-1 text-lg">{member.name}</p>
+                            <p className="text-gray-600 text-sm">{member.contact}</p>
                         </div>
                     ))}
                     {team.webTeamHeads.map((member, idx) => (
                         <div className="team-card text-center" key={idx}>
                             <span className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-purple-500 bg-white" style={{ height: 'auto' }}>
-                                {member.emoji}
+                                <img src="/images/wenhead.png" alt="Web Team Head" className="w-full h-full object-cover rounded-full" />
                             </span>
                             <p className="text-purple-600 font-medium">{member.role}</p>
+                            <p className="text-gray-800 font-semibold mt-1 text-lg">{member.name}</p>
+                            <p className="text-gray-600 text-sm">{member.contact}</p>
                         </div>
                     ))}
                     <div className="team-card text-center">
                         <span className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-pink-500 bg-white" style={{ height: 'auto' }}>
-                            {team.designTeamHead.emoji}
+                            <img src="/images/deshead.png" alt="Design Team Head" className="w-full h-full object-cover rounded-full" />
                         </span>
                         <p className="text-pink-600 font-medium">{team.designTeamHead.role}</p>
+                        <p className="text-gray-800 font-semibold mt-1 text-lg">{team.designTeamHead.name}</p>
+                        <p className="text-gray-600 text-sm">{team.designTeamHead.contact}</p>
                     </div>
                 </div>
                 <h3 className="text-2xl font-semibold text-center mb-4">Meet the Entire Team</h3>
