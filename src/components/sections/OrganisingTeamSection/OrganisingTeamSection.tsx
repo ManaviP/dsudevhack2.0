@@ -8,7 +8,6 @@ import { Carousel } from "@/components/ui/carousel";
 
 const team = {
     professorCoordinator: {
-        emoji: "👨‍🏫",
         role: "Faculty Coordinator",
         name: "Dr. Bipin Kumar Rai",
         designation: "Professor, CSE"
@@ -86,7 +85,7 @@ export const OrganisingTeamSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     <div className="team-card text-center">
                         <span className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-blue-500 bg-white" style={{ height: 'auto' }}>
-                            {team.professorCoordinator.emoji}
+                            <img src="/images/prof.png" alt="Faculty Coordinator" className="w-full h-full object-cover rounded-full" />
                         </span>
                         <p className="text-blue-600 font-medium">{team.professorCoordinator.role}</p>
                         <p className="text-gray-800 font-semibold mt-1 text-lg">{team.professorCoordinator.name}</p>
@@ -121,14 +120,14 @@ export const OrganisingTeamSection = () => {
                         <p className="text-gray-600 text-sm">{team.designTeamHead.contact}</p>
                     </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-center mb-4">Meet the Entire Team</h3>
+                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 organising-team-title" style={{ marginTop: '2.5rem' }}>Meet the Entire Team</h2>
                 <div className="flex justify-center" style={{ marginBottom: '4rem' }}>
                     <div className="relative overflow-hidden w-full h-full py-20">
                         <Carousel
                             slides={team.allMembers.slice(0, 6).map(member => ({
                                 title: member.label,
                                 button: "Explore Component",
-                                src: member.emoji // Replace with image path if available
+                                src: "/images/memb.png"
                             }))}
                         />
                     </div>

@@ -82,7 +82,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         }}
       >
         <div
-          className="absolute top-0 left-0 w-full h-full bg-white rounded-[1%] overflow-hidden transition-all duration-150 ease-out flex items-center justify-center"
+          className="absolute top-0 left-0 w-full h-full bg-white rounded-[1%] overflow-hidden transition-all duration-150 ease-out flex items-center justify-center p-4"
           style={{
             transform:
               current === index
@@ -90,7 +90,12 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
                 : "none",
           }}
         >
-          <span className="text-9xl">{src}</span>
+          <img
+            className="w-1/2 h-1/2 object-cover rounded-full"
+            alt={title}
+            src={src}
+            onLoad={imageLoaded}
+          />
         </div>
 
         <article
