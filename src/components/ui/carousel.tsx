@@ -131,9 +131,17 @@ const CarouselControl = ({
 
 interface CarouselProps {
   slides: SlideData[];
+  loop?: boolean;
+  autoplay?: boolean;
+  autoplayInterval?: number;
 }
 
-export function Carousel({ slides }: CarouselProps) {
+export function Carousel({
+  slides,
+  loop = true,
+  autoplay = true,
+  autoplayInterval = 1500,
+}: CarouselProps) {
   const [current, setCurrent] = useState(0);
 
   const handlePreviousClick = () => {
@@ -152,11 +160,21 @@ export function Carousel({ slides }: CarouselProps) {
     }
   };
 
+  useEffect(() => {
+    if (!autoplay) return;
+
+    const interval = setInterval(() => {
+      handleNextClick();
+    }, autoplayInterval);
+
+    return () => clearInterval(interval);
+  }, [autoplay, autoplayInterval, handleNextClick]);
+
   const id = useId();
 
   return (
     <div
-      className="relative w-[70vmin] h-[70vmin] mx-auto"
+      className="relative w-full h-[80vw] sm:w-[70vmin] sm:h-[70vmin] mx-auto max-w-2xl"
       aria-labelledby={`carousel-heading-${id}`}
     >
       <ul
@@ -175,20 +193,6 @@ export function Carousel({ slides }: CarouselProps) {
           />
         ))}
       </ul>
-
-      <div className="absolute top-1/2 -translate-y-1/2 w-[calc(100%_+_8rem)] -left-16 z-20 flex items-center justify-between pointer-events-none">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
-
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
-      </div>
     </div>
   );
 }
