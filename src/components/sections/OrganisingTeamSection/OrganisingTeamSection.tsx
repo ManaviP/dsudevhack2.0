@@ -43,16 +43,14 @@ const team = {
     designTeamHead: {
         emoji: "🎨",
         role: "Design Team Head",
-        name: "Design Team Head",
-        contact: "Contact Info"
+        name: "Jiya Patel",
+        contact: "73832 32239"
     },
     allMembers: [
         { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev" },
         { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev" },
         { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev" },
-        { emoji: "🧑‍🎓", label: "Team Member 4", role: "Placeholder" },
-        { emoji: "🧑‍🎓", label: "Team Member 5", role: "Placeholder" },
-        { emoji: "🧑‍🎓", label: "Team Member 6", role: "Placeholder" },
+        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev" },
         // ...add more as needed
     ],
 };
