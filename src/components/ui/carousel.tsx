@@ -4,6 +4,7 @@ import { useState, useRef, useId, useEffect } from "react";
 
 interface SlideData {
   title: string;
+  subtitle?: string;
   button: string;
   src: string;
 }
@@ -62,7 +63,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     event.currentTarget.style.opacity = "1";
   };
 
-  const { src, button, title } = slide;
+  const { src, button, title, subtitle } = slide;
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -83,15 +84,10 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
       >
         <div
           className="absolute top-0 left-0 w-full h-full bg-white rounded-[1%] overflow-hidden transition-all duration-150 ease-out flex items-center justify-center p-4"
-          style={{
-            transform:
-              current === index
-                ? "translate3d(calc(var(--x) / 30), calc(var(--y) / 30), 0)"
-                : "none",
-          }}
+          style={{ marginTop: '-2rem' }}
         >
           <img
-            className="w-1/2 h-1/2 object-cover rounded-full"
+            className="w-1/2 h-1/2 object-cover rounded-full border-4 border-black"
             alt={title}
             src={src}
             onLoad={imageLoaded}
@@ -99,12 +95,16 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         </div>
 
         <article
-          className={`absolute bottom-0 w-full p-[4vmin] transition-opacity duration-1000 ease-in-out ${current === index ? "opacity-100 visible" : "opacity-0 invisible"
-            }`}
+          className={`absolute bottom-8 w-full p-[4vmin] text-center`}
         >
           <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold text-black">
             {title}
           </h2>
+          {subtitle && (
+            <h3 className="text-md md:text-xl lg:text-2xl text-black">
+              {subtitle}
+            </h3>
+          )}
         </article>
       </li>
     </div>

@@ -37,7 +37,7 @@ const team = {
             emoji: "💻",
             role: "Web Team Head",
             name: "Rahul Jadvani",
-            contact: "6362050449"
+            contact: "63620 50449"
         },
     ],
     designTeamHead: {
@@ -47,12 +47,12 @@ const team = {
         contact: "Contact Info"
     },
     allMembers: [
-        { emoji: "🧑‍🎓", label: "Team Member 1" },
-        { emoji: "🧑‍🎓", label: "Team Member 2" },
-        { emoji: "🧑‍🎓", label: "Team Member 3" },
-        { emoji: "🧑‍🎓", label: "Team Member 4" },
-        { emoji: "🧑‍🎓", label: "Team Member 5" },
-        { emoji: "🧑‍🎓", label: "Team Member 6" },
+        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev" },
+        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev" },
+        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev" },
+        { emoji: "🧑‍🎓", label: "Team Member 4", role: "Placeholder" },
+        { emoji: "🧑‍🎓", label: "Team Member 5", role: "Placeholder" },
+        { emoji: "🧑‍🎓", label: "Team Member 6", role: "Placeholder" },
         // ...add more as needed
     ],
 };
@@ -126,6 +126,7 @@ export const OrganisingTeamSection = () => {
                         <Carousel
                             slides={team.allMembers.slice(0, 6).map(member => ({
                                 title: member.label,
+                                subtitle: member.role,
                                 button: "Explore Component",
                                 src: "/images/memb.png"
                             }))}
