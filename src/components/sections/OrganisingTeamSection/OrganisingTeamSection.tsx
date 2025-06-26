@@ -17,7 +17,7 @@ import "./OrganisingTeamSection.css";
 const team = {
     professorCoordinator: {
         emoji: "👨‍🏫",
-        role: "Professor Coordinator",
+        role: "Professor Co-ordinator",
     },
     studentCoordinators: [
         {
