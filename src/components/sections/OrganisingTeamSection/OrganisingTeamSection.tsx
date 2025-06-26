@@ -1,18 +1,10 @@
 "use client";
 
 import * as React from "react";
-import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./OrganisingTeamSection.css";
+import { Carousel } from "@/components/ui/carousel";
 
 const team = {
     professorCoordinator: {
@@ -67,10 +59,6 @@ const team = {
 };
 
 export const OrganisingTeamSection = () => {
-    const plugin = React.useRef(
-        Autoplay({ delay: 2000, stopOnInteraction: true })
-    );
-
     // Animation on in-view
     const controls = useAnimation();
     const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.15 });
@@ -135,31 +123,15 @@ export const OrganisingTeamSection = () => {
                 </div>
                 <h3 className="text-2xl font-semibold text-center mb-4">Meet the Entire Team</h3>
                 <div className="flex justify-center" style={{ marginBottom: '4rem' }}>
-                    <Carousel
-                        plugins={[plugin.current as any]}
-                        className="w-full max-w-4xl"
-                        onMouseEnter={plugin.current.stop}
-                        onMouseLeave={plugin.current.reset}
-                    >
-                        <CarouselContent>
-                            {team.allMembers.map((member, index) => (
-                                <CarouselItem key={index}>
-                                    <div className="p-4">
-                                        <Card>
-                                            <CardContent className="flex flex-col items-center justify-center p-6 min-h-[18rem]">
-                                                <span className="rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-2 border-2 border-gray-300 bg-white" style={{ height: 'auto' }}>
-                                                    {member.emoji}
-                                                </span>
-                                                <span className="text-base text-gray-700 mt-2 font-semibold">{member.label}</span>
-                                            </CardContent>
-                                        </Card>
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </Carousel>
+                    <div className="relative overflow-hidden w-full h-full py-20">
+                        <Carousel
+                            slides={team.allMembers.slice(0, 6).map(member => ({
+                                title: member.label,
+                                button: "Explore Component",
+                                src: member.emoji // Replace with image path if available
+                            }))}
+                        />
+                    </div>
                 </div>
             </div>
         </motion.section>
