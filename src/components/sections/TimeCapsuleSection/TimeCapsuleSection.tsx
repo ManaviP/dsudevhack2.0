@@ -1,162 +1,167 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './TimeCapsuleSection.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Helper function to calculate the total scrollable width
+const getScrollAmount = (element: HTMLElement | null) => {
+  if (!element) return 0;
+  return element.scrollWidth - window.innerWidth + (window.innerWidth * 0.1);
+};
 
 const timeCapsuleItems = [
   {
     id: 1,
     title: 'First DSU DevHack',
     description: 'The inaugural hackathon that started it all.',
-    imageUrl: '/images/s1.jpg'
+    imageUrl: '/images/s1.jpg',
   },
   {
     id: 2,
     title: 'Strong Reach',
     description: 'Attracted 2000+ Registrations and 300+ Onground Hackers.',
-    imageUrl: '/images/s2.jpg'
+    imageUrl: '/images/s2.jpg',
   },
   {
     id: 3,
     title: 'Hybrid Format',
-    description: '36 Hours of energetic coding',
-    imageUrl: '/images/s3.jpg'
+    description: '36 Hours of energetic coding.',
+    imageUrl: '/images/s3.jpg',
   },
   {
     id: 4,
     title: 'Multiple Domains ⚡',
-    description: '6 different domains including IOT & Web3 for all varieties of hackers.',
-    imageUrl: '/images/s4.jpg'
+    description: '6 different domains including IOT & Web3.',
+    imageUrl: '/images/s4.jpg',
   },
   {
     id: 5,
     title: 'Industrial Experts as Jury',
-    description: 'Exceptional Judgement Rounds by experts from Top Industries',
-    imageUrl: '/images/s5.jpg'
+    description: 'Judgement rounds by industry experts.',
+    imageUrl: '/images/s5.jpg',
   }
 ];
 
-
-
 export const TimeCapsuleSection = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const reelRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
 
-  // Animation to reveal the section when it comes into view
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+    if (!horizontalRef.current || !containerRef.current) return;
+  
+    const scrollContainer = horizontalRef.current;
+    const totalWidth = scrollContainer.scrollWidth;
+    const cardWidth = scrollContainer.children[0]?.clientWidth || 0;
+    const viewportWidth = window.innerWidth;
+  
+    const startOffset = viewportWidth / 2 - cardWidth / 2;
+    const endOffset = totalWidth - viewportWidth + startOffset;
+  
+    gsap.set(scrollContainer, { x: startOffset }); // Start with first card centered
+  
+    const tween = gsap.to(scrollContainer, {
+      x: -endOffset,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: () => `+=${endOffset + startOffset}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const center = window.innerWidth / 2;
+          const cards = scrollContainer.children;
+  
+          Array.from(cards).forEach((card) => {
+            const box = (card as HTMLElement).getBoundingClientRect();
+            const cardCenter = box.left + box.width / 2;
+            const distance = Math.abs(center - cardCenter);
+            const scale = gsap.utils.mapRange(0, center, 1.1, 0.85, distance);
+            const opacity = gsap.utils.mapRange(0, center, 1, 0.4, distance);
+  
+            gsap.to(card, {
+              scale,
+              opacity,
+              duration: 0.3,
+              overwrite: true,
+            });
+          });
+        },
       },
-      { threshold: 0.1 }
-    );
+    });
+    // Add scroll progress animation
+gsap.to('.scroll-progress-fill', {
+  width: '100%',
+  ease: 'none',
+  scrollTrigger: {
+    trigger: containerRef.current,
+    start: 'top top',
+    end: () => `+=${endOffset + startOffset}`,
+    scrub: true,
+  },
+});
+// ✅ Add mobile-specific animation
+if (window.innerWidth <= 768) {
+  const cards = horizontalRef.current?.querySelectorAll(".time-capsule-item");
 
-    const section = document.getElementById('time-capsule');
-    if (section) observer.observe(section);
+  if (cards && cards.length > 0) {
+    cards.forEach((card) => {
+      gsap.fromTo(card,
+        { scale: 0.9, opacity: 0.6 },
+        {
+          scale: 1,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: card as HTMLElement,
+            start: "top 80%",
+            end: "bottom 40%",
+            scrub: true,
+          },
+        });
+    });
+  }
+}
 
+  
+    const handleResize = () => {
+      tween.scrollTrigger?.refresh();
+    };
+  
+    window.addEventListener('resize', handleResize);
     return () => {
-      if (section) observer.unobserve(section);
+      tween.scrollTrigger?.kill();
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  // Toggle the time capsule open/closed state
-  const toggleTimeCapsule = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Scroll the reel left
-  const scrollLeft = () => {
-    if (reelRef.current) {
-      reelRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
-  };
-
-  // Scroll the reel right
-  const scrollRight = () => {
-    if (reelRef.current) {
-      reelRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
-  };
+  
+  
+  
 
   return (
-    <section id="time-capsule" className="time-capsule-section">
-      <div className="time-capsule-container">
-        <motion.h2
-          className="time-capsule-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          DevHack Time Capsule
-        </motion.h2>
+    <section className="time-capsule-section" ref={containerRef}>
+  <div className="scroll-progress-bar">
+    <div className="scroll-progress-fill" />
+  </div>
 
-        {/* Closed time capsule view */}
-        <motion.div
-          className="time-capsule-closed"
-          onClick={toggleTimeCapsule}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-        >
-          <img
-            src="/images/images.jpeg"
-            alt="DevHack History"
-            className="time-capsule-image"
-          />
-          <div className="time-capsule-content">
-            <h3 className="time-capsule-year">2024</h3>
-            <p className="time-capsule-description">
-              Explore the history of DSU DevHack . Click to open the time capsule and journey through our past events.
-            </p>
-            <button type="button" className="time-capsule-button">
-              {isOpen ? 'Close' : 'Open'} Time Capsule <span className="time-capsule-button-arrow">→</span>
-            </button>
+      <div className="intro-content">
+        <h2 className="time-capsule-title">DevHack Time Capsule</h2>
+        <p className="time-capsule-description">
+          Scroll down to journey through past DSU DevHack moments.
+        </p>
+      </div>
+
+      <div className="horizontal-scroll" ref={horizontalRef}>
+        {timeCapsuleItems.map((item) => (
+          <div key={item.id} className="time-capsule-item">
+            <img src={item.imageUrl} alt={item.title} />
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
           </div>
-        </motion.div>
-
-        {/* Expanded time capsule view */}
-        <div className={`time-capsule-expanded ${isOpen ? 'open' : ''}`}>
-          <div className="film-strip-top">
-            {[...Array(20)].map((_, i) => (
-              <div key={`top-${i}`} className="film-hole"></div>
-            ))}
-          </div>
-
-          <button type="button" className="time-capsule-close" onClick={toggleTimeCapsule}>
-            ✕
-          </button>
-
-          <div className="time-capsule-reel" ref={reelRef}>
-            {timeCapsuleItems.map((item) => (
-              <div key={item.id} className="time-capsule-item">
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="time-capsule-item-image"
-                />
-                <h5 className="time-capsule-item-title">{item.title}</h5>
-                <p className="time-capsule-item-description">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="time-capsule-navigation">
-            <button type="button" className="time-capsule-nav-button" onClick={scrollLeft}>
-              ←
-            </button>
-            <button type="button" className="time-capsule-nav-button" onClick={scrollRight}>
-              →
-            </button>
-          </div>
-
-          <div className="film-strip-bottom">
-            {[...Array(20)].map((_, i) => (
-              <div key={`bottom-${i}`} className="film-hole"></div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

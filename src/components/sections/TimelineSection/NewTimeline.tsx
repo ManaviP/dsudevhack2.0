@@ -11,6 +11,36 @@ export const NewTimeline: React.FC = () => {
 
   useEffect(() => {
     if (!timelineRef.current) return;
+    
+    const heading = timelineRef.current.querySelector('.new-timeline-heading');
+
+    if (heading) {
+      // Reset animation state
+      heading.classList.remove('typewriter');
+      
+      // Small delay to ensure the class is removed before re-adding
+      setTimeout(() => {
+        ScrollTrigger.create({
+          trigger: heading,
+          start: 'top 85%',
+          onEnter: () => {
+            heading.classList.add('typewriter');
+          },
+          onEnterBack: () => {
+            heading.classList.add('typewriter');
+          },
+          onLeave: () => {
+            // Keep the final state visible after animation
+          },
+          onLeaveBack: () => {
+            // Reset when scrolling back up
+            heading.classList.remove('typewriter');
+          },
+          once: false
+        });
+      }, 100);
+    }
+
 
     // Get all timeline columns
     const columns = timelineRef.current.querySelectorAll('.timeline-column');
