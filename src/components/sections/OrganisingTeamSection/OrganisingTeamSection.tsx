@@ -14,7 +14,7 @@ const team = {
         designation: "Professor, CSE",
         instagram: "https://instagram.com/your_instagram_handle",
         linkedin: "https://linkedin.com/in/your_linkedin_handle",
-        imageSrc: "/images/prof.png"
+        imageSrc: "/images/members/sir.jpg"
     },
     studentCoordinators: [
         {
@@ -22,18 +22,18 @@ const team = {
             role: "Student Coordinator",
             name: "Utkarsh Priye (Jha)",
             contact: "99396 35206",
-            instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle",
-            imageSrc: "/images/coords.png"
+            instagram: "https://www.instagram.com/codex_ukj",
+            linkedin: "https://www.linkedin.com/in/utkarsh-priye-jha",
+            imageSrc: "/images/members/Utkarsh.jpg"
         },
         {
             emoji: "🧑‍🎓",
             role: "Student Coordinator",
             name: "Ritvik Vasundh",
             contact: "82996 86568",
-            instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle",
-            imageSrc: "/images/coords.png"
+            instagram: "https://www.instagram.com/ritvik.you/",
+            linkedin: "https://www.linkedin.com/in/ritvikvasundh/",
+            imageSrc: "/images/members/Ritvik.jpg"
         },
         {
             emoji: "🧑‍🎓",
@@ -51,8 +51,8 @@ const team = {
             role: "Web Team Head",
             name: "Rahul Jadvani",
             contact: "63620 50449",
-            instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle",
+            instagram: "https://www.instagram.com/rahul.jadvani.47",
+            linkedin: "http://www.linkedin.com/in/rahul-jadvani",
             imageSrc: "/images/wenhead.png"
         },
     ],
@@ -61,25 +61,25 @@ const team = {
         role: "Marketing & Cultural Head",
         name: "Ashwin",
         contact: "97407 41554",
-        instagram: "https://instagram.com/your_instagram_handle",
+        instagram: "https://www.instagram.com/ft.knocknards",
         linkedin: "https://linkedin.com/in/your_linkedin_handle",
         imageSrc: "/images/deshead.png"
     },
     allMembers: [
-        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "98765 43210", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", phoneNumber: "98765 43211", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "98765 43212", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "98765 43213", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "98765 43214", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Niharika", role: "Design Team", phoneNumber: "98765 43215", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "98765 43216", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "98765 43217", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "98765 43218", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Trisha", role: "Design Team", phoneNumber: "98765 43219", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "98765 43220", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "97469 24371", instagram: "https://www.instagram.com/_._manavi_._/", linkedin: "https://www.linkedin.com/in/manavi-p-576a8b279/" },
+        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", phoneNumber: "83174 63317", instagram: "https://www.instagram.com/sreenidhi_s.29?igsh=OHBvMjMzYWMyNGgz", linkedin: "http://www.linkedin.com/in/shreenidhi-s29" },
+        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "86604 61773", instagram: "https://www.instagram.com/__nithesh__03?igsh=MXZ1NzZuMGtndHNodw%3D%3D&utm_source=qr", linkedin: "http://www.linkedin.com/in/g-nithesh-495380311" },
+        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "80885 26961", instagram: "https://www.instagram.com/_iamthehonouredone/profilecard/?igsh=N29xOGhpeXkzbG01", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "89516 28426", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://www.linkedin.com/in/mayur-adithya-2324aa31b" },
+        { emoji: "🎨", label: "Niharika", role: "Design Team", phoneNumber: "93410 38834", instagram: "https://www.instagram.com/niharika__trivedi?igsh=MTVpNWQxemdjcjNxYw%3D%3D&utm_source=qr", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "86605 75694", instagram: "https://www.instagram.com/prasad.moulya", linkedin: "https://in.linkedin.com/in/moulya-b-9435632b5" },
+        { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "99727 59382", instagram: "https://www.instagram.com/moulika.k.reddy", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+        { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "86600 29131", instagram: "https://www.instagram.com/_.raksha.umashankar._", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+        { emoji: "🎨", label: "Trisha", role: "Design Team", phoneNumber: "91423 32379", instagram: "https://www.instagram.com/trishaaa.10.___", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "85408 39078", instagram: "https://www.instagram.com/aastha_6696", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
         { emoji: "🤝", label: "Harsh", role: "Sponsorship Team", phoneNumber: "98765 43221", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "98765 43222", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "98765 43223", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "93164 04353", instagram: "https://www.instagram.com/ahhmaddx_", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "91087 65555", instagram: "https://www.instagram.com/vivan_rajiv_336?igsh=ZXJ2bWVnM24wM2g0", linkedin: "https://www.linkedin.com/in/vivan-rajiv-yenagimath-950b4a2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
         // ...add more as needed
     ],
 };

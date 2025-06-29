@@ -73,7 +73,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
       <li
         ref={slideRef}
-        className="group relative flex flex-1 flex-col items-center justify-center text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[50vmin] h-[50vmin] mx-[4vmin] z-10 cursor-pointer select-none overflow-hidden"
+        className="group relative flex flex-1 flex-col items-center justify-center text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[50vmin] h-[50vmin] mx-[4vmin] z-10 cursor-pointer select-none overflow-hidden carousel-one-card-mobile"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -87,7 +87,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         }}
       >
         {/* Background with light color gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 rounded-[1%] overflow-hidden" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 rounded-[1.6em] overflow-hidden" />
 
         {/* Member Image */}
         <div className={`absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2 animate-smooth z-10 ${current === index ? 'translate-x-0 translate-y-0 bottom-16 right-16' : 'translate-y-[-1rem]'}`}>

@@ -622,8 +622,8 @@ body {
   }
 
   .mobile-menu-dot {
-    width: 6px; /* Increased from 5px */
-    height: 6px; /* Increased from 5px */
+    width: 2px; /* Decreased from 6px */
+    height: 2px; /* Decreased from 6px */
     background-color: #0f172a;
     border-radius: 50%;
   }
