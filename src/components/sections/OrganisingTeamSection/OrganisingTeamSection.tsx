@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./OrganisingTeamSection.css";
 import { Carousel } from "@/components/ui/carousel";
+import AnimatedTeamCard from "./AnimatedTeamCard";
 
 const team = {
     professorCoordinator: {
@@ -12,7 +13,8 @@ const team = {
         name: "Dr. Bipin Kumar Rai",
         designation: "Professor, CSE",
         instagram: "https://instagram.com/your_instagram_handle",
-        linkedin: "https://linkedin.com/in/your_linkedin_handle"
+        linkedin: "https://linkedin.com/in/your_linkedin_handle",
+        imageSrc: "/images/prof.png"
     },
     studentCoordinators: [
         {
@@ -21,7 +23,8 @@ const team = {
             name: "Utkarsh Priye (Jha)",
             contact: "99396 35206",
             instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle"
+            linkedin: "https://linkedin.com/in/your_linkedin_handle",
+            imageSrc: "/images/coords.png"
         },
         {
             emoji: "🧑‍🎓",
@@ -29,7 +32,8 @@ const team = {
             name: "Ritvik Vasundh",
             contact: "82996 86568",
             instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle"
+            linkedin: "https://linkedin.com/in/your_linkedin_handle",
+            imageSrc: "/images/coords.png"
         },
         {
             emoji: "🧑‍🎓",
@@ -37,7 +41,8 @@ const team = {
             name: "Jiya Patel",
             contact: "73832 32239",
             instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle"
+            linkedin: "https://linkedin.com/in/your_linkedin_handle",
+            imageSrc: "/images/coords.png"
         },
     ],
     webTeamHeads: [
@@ -47,7 +52,8 @@ const team = {
             name: "Rahul Jadvani",
             contact: "63620 50449",
             instagram: "https://instagram.com/your_instagram_handle",
-            linkedin: "https://linkedin.com/in/your_linkedin_handle"
+            linkedin: "https://linkedin.com/in/your_linkedin_handle",
+            imageSrc: "/images/wenhead.png"
         },
     ],
     designTeamHead: {
@@ -56,23 +62,24 @@ const team = {
         name: "Ashwin",
         contact: "97407 41554",
         instagram: "https://instagram.com/your_instagram_handle",
-        linkedin: "https://linkedin.com/in/your_linkedin_handle"
+        linkedin: "https://linkedin.com/in/your_linkedin_handle",
+        imageSrc: "/images/deshead.png"
     },
     allMembers: [
-        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Mayur", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Niharika", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Moulya", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Moulika", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Raksha", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Trisha", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Aastha", role: "Design Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🤝", label: "Harsh", role: "Sponsorship Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Ahmad", role: "Marketing Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Vivan", role: "Marketing Team", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "98765 43210", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", phoneNumber: "98765 43211", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "98765 43212", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "98765 43213", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "98765 43214", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Niharika", role: "Design Team", phoneNumber: "98765 43215", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "98765 43216", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "98765 43217", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "98765 43218", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Trisha", role: "Design Team", phoneNumber: "98765 43219", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "98765 43220", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "🤝", label: "Harsh", role: "Sponsorship Team", phoneNumber: "98765 43221", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "98765 43222", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
+        { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "98765 43223", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
         // ...add more as needed
     ],
 };
@@ -137,155 +144,70 @@ export const OrganisingTeamSection = () => {
                 <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 organising-team-title" style={{ marginTop: '2.5rem' }}>
                     Organising Team
                 </h2>
+
+                {/* Animated Cards Grid for 6 Main Members */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    {/* Faculty Coordinator */}
                     <motion.div
-                        className="team-card text-center"
                         initial={{ opacity: 0, y: 60, scale: 0.9 }}
                         whileInView={{ opacity: 1, y: 0, scale: 1 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        <motion.span
-                            className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-blue-500 bg-white"
-                            style={{ height: 'auto' }}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                        >
-                            <img src="/images/prof.png" alt="Faculty Coordinator" className="w-full h-full object-cover rounded-full" />
-                        </motion.span>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                        >
-                            <p className="text-blue-600 font-medium">{formatRole(team.professorCoordinator.role)}</p>
-                            <p className="text-gray-800 font-semibold mt-1 text-lg">{team.professorCoordinator.name}</p>
-                            <p className="text-gray-600 text-sm">{team.professorCoordinator.designation}</p>
-                            <SocialMediaIcons
-                                instagram={team.professorCoordinator.instagram}
-                                linkedin={team.professorCoordinator.linkedin}
-                            />
-                        </motion.div>
+                        <AnimatedTeamCard member={team.professorCoordinator} delay={0.1} cardIndex={0} />
                     </motion.div>
+
+                    {/* Student Coordinators */}
                     {team.studentCoordinators.map((member, idx) => (
                         <motion.div
-                            className="team-card text-center"
                             key={idx}
                             initial={{ opacity: 0, y: 60, scale: 0.9 }}
                             whileInView={{ opacity: 1, y: 0, scale: 1 }}
                             viewport={{ once: false }}
-                            transition={{ duration: 0.6, delay: 0.1 + (idx * 0.1) }}
+                            transition={{ duration: 0.6, delay: 0.2 + (idx * 0.1) }}
                         >
-                            <motion.span
-                                className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-green-500 bg-white"
-                                style={{ height: 'auto' }}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.8, delay: 0.3 + (idx * 0.1) }}
-                            >
-                                <img src="/images/coords.png" alt="Coordinator" className="w-full h-full object-cover rounded-full" />
-                            </motion.span>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.5, delay: 0.5 + (idx * 0.1) }}
-                            >
-                                <p className="text-green-600 font-medium">{formatRole(member.role)}</p>
-                                <p className="text-gray-800 font-semibold mt-1 text-lg">{member.name}</p>
-                                <p className="text-gray-600 text-sm">{member.contact}</p>
-                                <SocialMediaIcons
-                                    instagram={member.instagram}
-                                    linkedin={member.linkedin}
-                                />
-                            </motion.div>
+                            <AnimatedTeamCard member={member} delay={0.2 + (idx * 0.1)} cardIndex={1 + idx} />
                         </motion.div>
                     ))}
+
+                    {/* Web Team Head */}
                     {team.webTeamHeads.map((member, idx) => (
                         <motion.div
-                            className="team-card text-center"
                             key={idx}
                             initial={{ opacity: 0, y: 60, scale: 0.9 }}
                             whileInView={{ opacity: 1, y: 0, scale: 1 }}
                             viewport={{ once: false }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
                         >
-                            <motion.span
-                                className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-purple-500 bg-white"
-                                style={{ height: 'auto' }}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.8, delay: 0.3 }}
-                            >
-                                <img src="/images/wenhead.png" alt="Web Team Head" className="w-full h-full object-cover rounded-full" />
-                            </motion.span>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.5, delay: 0.5 }}
-                            >
-                                <p className="text-purple-600 font-medium">{formatRole(member.role)}</p>
-                                <p className="text-gray-800 font-semibold mt-1 text-lg">{member.name}</p>
-                                <p className="text-gray-600 text-sm">{member.contact}</p>
-                                <SocialMediaIcons
-                                    instagram={member.instagram}
-                                    linkedin={member.linkedin}
-                                />
-                            </motion.div>
+                            <AnimatedTeamCard member={member} delay={0.5} cardIndex={4} />
                         </motion.div>
                     ))}
+
+                    {/* Design Team Head */}
                     <motion.div
-                        className="team-card text-center"
                         initial={{ opacity: 0, y: 60, scale: 0.9 }}
                         whileInView={{ opacity: 1, y: 0, scale: 1 }}
                         viewport={{ once: false }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
                     >
-                        <motion.span
-                            className="mx-auto rounded-full w-24 h-24 text-5xl md:w-32 md:h-32 md:text-6xl lg:w-48 lg:h-48 lg:text-[8rem] flex items-center justify-center mb-4 border-4 border-pink-500 bg-white"
-                            style={{ height: 'auto' }}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                        >
-                            <img src="/images/deshead.png" alt="Design Team Head" className="w-full h-full object-cover rounded-full" />
-                        </motion.span>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                        >
-                            <p className="text-pink-600 font-medium">{formatRole(team.designTeamHead.role)}</p>
-                            <p className="text-gray-800 font-semibold mt-1 text-lg">{team.designTeamHead.name}</p>
-                            <p className="text-gray-600 text-sm">{team.designTeamHead.contact}</p>
-                            <SocialMediaIcons
-                                instagram={team.designTeamHead.instagram}
-                                linkedin={team.designTeamHead.linkedin}
-                            />
-                        </motion.div>
+                        <AnimatedTeamCard member={team.designTeamHead} delay={0.6} cardIndex={5} />
                     </motion.div>
                 </div>
+
                 <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 organising-team-title" style={{ marginTop: '2.5rem' }}>Meet the Entire Team</h2>
                 <div className="flex justify-center" style={{ marginBottom: '4rem' }}>
                     <div className="relative overflow-hidden w-full h-full py-20">
                         <Carousel
-                            slides={team.allMembers.map(member => ({
+                            slides={team.allMembers.map((member, index) => ({
                                 title: member.label,
                                 subtitle: member.role,
                                 button: "Explore Component",
                                 src: "/images/memb.png",
                                 instagram: member.instagram,
-                                linkedin: member.linkedin
+                                linkedin: member.linkedin,
+                                phoneNumber: member.phoneNumber || "Contact via social media"
                             }))}
-                            autoplayInterval={2000}
+                            autoplayInterval={3000}
                         />
                     </div>
                 </div>

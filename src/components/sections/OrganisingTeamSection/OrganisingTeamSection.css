@@ -9,4 +9,61 @@
     background-color: #111827;
 }
 
+/* Single light colors for animated team cards - following website palette */
+.bg-card-blue {
+    background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+}
+
+.bg-card-purple {
+    background: linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%);
+}
+
+.bg-card-cyan {
+    background: linear-gradient(135deg, #CFFAFE 0%, #A5F3FC 100%);
+}
+
+.bg-card-yellow {
+    background: linear-gradient(135deg, #FEFCE8 0%, #FEF3C7 100%);
+}
+
+.bg-card-orange {
+    background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 100%);
+}
+
+.bg-card-pink {
+    background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%);
+}
+
+/* Custom border utilities */
+.border-3 {
+    border-width: 3px;
+}
+
+/* Custom transition delays */
+.transition-delay-200 {
+    transition-delay: 200ms;
+}
+
+.transition-delay-400 {
+    transition-delay: 400ms;
+}
+
+.transition-delay-600 {
+    transition-delay: 600ms;
+}
+
+/* Custom border radius for animated boxes */
+.rounded-custom {
+    border-radius: 10% 13% 42% 0% / 10% 12% 75% 0%;
+}
+
+/* Smooth animation utilities */
+.animate-smooth {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-smooth-slow {
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* ...existing CSS... */
