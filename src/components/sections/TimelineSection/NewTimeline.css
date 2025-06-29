@@ -7,13 +7,24 @@
   position: relative;
   overflow: visible;
 }
-
 .new-timeline-heading {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   color: white;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.new-timeline-heading.typewriter {
+  animation: typing 1s steps(15, end) forwards;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 15ch; } /* Adjust based on your text length */
 }
 
 /* Grid background for the entire timeline */
