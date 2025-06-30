@@ -33,7 +33,7 @@ const team = {
             contact: "82996 86568",
             instagram: "https://www.instagram.com/ritvik.you/",
             linkedin: "https://www.linkedin.com/in/ritvikvasundh/",
-            imageSrc: "/images/members/Ritvik.jpg"
+            imageSrc: "/images/members/Ritvik.JPG"
         },
         {
             emoji: "🧑‍🎓",
@@ -42,7 +42,7 @@ const team = {
             contact: "73832 32239",
             instagram: "https://instagram.com/your_instagram_handle",
             linkedin: "https://linkedin.com/in/your_linkedin_handle",
-            imageSrc: "/images/coords.png"
+            imageSrc: "/images/members/Jiya.webp"
         },
     ],
     webTeamHeads: [
@@ -53,7 +53,7 @@ const team = {
             contact: "63620 50449",
             instagram: "https://www.instagram.com/rahul.jadvani.47",
             linkedin: "http://www.linkedin.com/in/rahul-jadvani",
-            imageSrc: "/images/wenhead.png"
+            imageSrc: "/images/members/Rahul.jpg"
         },
     ],
     designTeamHead: {
@@ -63,7 +63,7 @@ const team = {
         contact: "97407 41554",
         instagram: "https://www.instagram.com/ft.knocknards",
         linkedin: "https://linkedin.com/in/your_linkedin_handle",
-        imageSrc: "/images/deshead.png"
+        imageSrc: "/images/members/Ashwin.jpg"
     },
     allMembers: [
         { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "97469 24371", instagram: "https://www.instagram.com/_._manavi_._/", linkedin: "https://www.linkedin.com/in/manavi-p-576a8b279/" },

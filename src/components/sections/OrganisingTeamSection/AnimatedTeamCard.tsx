@@ -35,11 +35,12 @@ const AnimatedTeamCard: React.FC<AnimatedTeamCardProps> = ({ member, delay = 0, 
             className="group relative w-full h-[300px] bg-gray-300 rounded-[1.6em] overflow-hidden shadow-lg animate-smooth cursor-pointer select-none hover:scale-105"
             style={{ animationDelay: `${delay}s` }}
         >
-            {/* Background Color */}
-            <div className={`absolute inset-0 ${getColorClass(cardIndex)}`} />
+            {/* Background Image (with blur on hover) */}
+            <div className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-300 ${member.imageSrc ? '' : getColorClass(cardIndex)} group-hover:blur-sm`}
+                style={member.imageSrc ? { backgroundImage: `url('${member.imageSrc}')` } : {}} />
 
-            {/* Member Image */}
-            <div className="absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2 animate-smooth z-10 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:bottom-8 group-hover:right-8">
+            {/* Member Image - Only appears on hover */}
+            <div className="absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2 animate-smooth z-10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-x-0 group-hover:translate-y-0 group-hover:bottom-8 group-hover:right-8">
                 <img
                     src={member.imageSrc || "/images/memb.png"}
                     alt={member.name}
@@ -48,11 +49,13 @@ const AnimatedTeamCard: React.FC<AnimatedTeamCardProps> = ({ member, delay = 0, 
             </div>
 
             {/* Member Info - Always Visible, Disappears on Hover */}
-            <div className="absolute bottom-4 left-4 right-4 z-20 animate-smooth group-hover:opacity-0 group-hover:transform group-hover:translate-y-4">
-                <h3 className="text-xl font-bold text-gray-800 mb-2 drop-shadow-lg">{member.name}</h3>
-                <p className="text-base text-gray-700 mb-1 drop-shadow-lg">{member.role}</p>
-                {member.contact && <p className="text-sm text-gray-600 drop-shadow-lg">{member.contact}</p>}
-                {member.designation && <p className="text-sm text-gray-600 drop-shadow-lg">{member.designation}</p>}
+            <div className="absolute bottom-4 left-4 z-20 animate-smooth group-hover:opacity-0 group-hover:transform group-hover:translate-y-4">
+                <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg max-w-xs min-w-[180px] w-fit border border-white/20 shadow-md">
+                    <h3 className="text-xl font-bold text-black mb-1 drop-shadow-lg">{member.name}</h3>
+                    <p className="text-base text-black mb-0.5 drop-shadow-lg">{member.role}</p>
+                    {member.contact && <p className="text-sm text-black drop-shadow-lg">{member.contact}</p>}
+                    {member.designation && <p className="text-sm text-black drop-shadow-lg">{member.designation}</p>}
+                </div>
             </div>
 
             {/* Animated Boxes */}

@@ -11,27 +11,45 @@
 
 /* Single light colors for animated team cards - following website palette */
 .bg-card-blue {
-    background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+    background-image: url('/images/members/sir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-card-purple {
-    background: linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%);
+    background-image: url('/images/members/Ritvik.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-card-cyan {
-    background: linear-gradient(135deg, #CFFAFE 0%, #A5F3FC 100%);
+    background-image: url('/images/members/sir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-card-yellow {
-    background: linear-gradient(135deg, #FEFCE8 0%, #FEF3C7 100%);
+    background-image: url('/images/members/sir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-card-orange {
-    background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 100%);
+    background-image: url('/images/members/sir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-card-pink {
-    background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%);
+    background-image: url('/images/members/sir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Custom border utilities */
