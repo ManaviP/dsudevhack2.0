@@ -71,11 +71,9 @@ const team = {
         { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "86604 61773", instagram: "https://www.instagram.com/__nithesh__03?igsh=MXZ1NzZuMGtndHNodw%3D%3D&utm_source=qr", linkedin: "http://www.linkedin.com/in/g-nithesh-495380311", imageSrc: "/images/members/G Nithesh.HEIC" },
         { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "80885 26961", instagram: "https://www.instagram.com/_iamthehonouredone/profilecard/?igsh=N29xOGhpeXkzbG01", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/Sachin.jpg" },
         { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "89516 28426", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://www.linkedin.com/in/mayur-adithya-2324aa31b", imageSrc: "/images/members/Mayur.jpg" },
-        { emoji: "🎨", label: "Niharika", role: "Design Team", phoneNumber: "93410 38834", instagram: "https://www.instagram.com/niharika__trivedi?igsh=MTVpNWQxemdjcjNxYw%3D%3D&utm_source=qr", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
         { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "86605 75694", instagram: "https://www.instagram.com/prasad.moulya", linkedin: "https://in.linkedin.com/in/moulya-b-9435632b5", imageSrc: "/images/members/moulya.jpg" },
         { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "99727 59382", instagram: "https://www.instagram.com/moulika.k.reddy", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/moulika.jpg" },
         { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "86600 29131", instagram: "https://www.instagram.com/_.raksha.umashankar._", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/raksha.JPG" },
-        { emoji: "🎨", label: "Trisha", role: "Design Team", phoneNumber: "91423 32379", instagram: "https://www.instagram.com/trishaaa.10.___", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
         { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "85408 39078", instagram: "https://www.instagram.com/aastha_6696", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/aastha.jpg" },
         { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "93164 04353", instagram: "https://www.instagram.com/ahhmaddx_", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/ahmad.jpg" },
         { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "91087 65555", instagram: "https://www.instagram.com/vivan_rajiv_336?igsh=ZXJ2bWVnM24wM2g0", linkedin: "https://www.linkedin.com/in/vivan-rajiv-yenagimath-950b4a2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/vivan_rajiv_336.jpg" },
@@ -200,12 +198,13 @@ export const OrganisingTeamSection = () => {
                     <div className="relative overflow-hidden w-full h-full py-20 flex items-center">
                         {/* Left Button */}
                         <button
-                            className="absolute left-0 z-20 w-12 h-12 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
+                            className="absolute left-0 z-20 w-10 h-10 md:w-8 md:h-8 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
                             style={{ top: '50%', transform: 'translateY(-50%)' }}
+                            id="carousel-left-btn"
                             onClick={() => carouselRef.current?.handlePreviousClick?.()}
                             aria-label="Previous"
                         >
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                            <svg className="w-5 h-5 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
                         </button>
                         {/* Carousel */}
                         <Carousel
@@ -223,16 +222,26 @@ export const OrganisingTeamSection = () => {
                         />
                         {/* Right Button */}
                         <button
-                            className="absolute right-0 z-20 w-12 h-12 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
+                            className="absolute right-0 z-20 w-10 h-10 md:w-8 md:h-8 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
                             style={{ top: '50%', transform: 'translateY(-50%)' }}
+                            id="carousel-right-btn"
                             onClick={() => carouselRef.current?.handleNextClick?.()}
                             aria-label="Next"
                         >
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                            <svg className="w-5 h-5 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>
                 </div>
             </div>
+            <style>
+                {`
+                    @media (min-width: 768px) {
+                        #carousel-left-btn, #carousel-right-btn {
+                            top: 40% !important;
+                        }
+                    }
+                `}
+            </style>
         </motion.section>
     );
 }; 

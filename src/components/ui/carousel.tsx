@@ -100,20 +100,20 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         </div>
 
         {/* Member Info - Always Visible, Disappears on Hover */}
-        <div className="absolute bottom-4 left-4 z-20 animate-smooth group-hover:opacity-0 group-hover:transform group-hover:translate-y-4">
-          <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg max-w-xs min-w-[180px] w-fit border border-white/20 shadow-md">
-            <h2 className="text-xl font-bold text-black mb-1 drop-shadow-lg">{title}</h2>
+        <div className="absolute bottom-4 left-4 z-20 animate-smooth group-hover:opacity-0 group-hover:transform group-hover:translate-y-4 text-left">
+          <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg max-w-xs min-w-[180px] w-fit border border-white/20 shadow-md text-left">
+            <h2 className="text-xl font-bold text-black mb-1 drop-shadow-lg text-left">{title}</h2>
             {subtitle && (
-              <p className="text-base text-black mb-0.5 drop-shadow-lg">
+              <p className="text-base text-black mb-0.5 drop-shadow-lg text-left">
                 {subtitle.split('&').map((part, index) => (
-                  <div key={index} className="leading-tight">
+                  <div key={index} className="leading-tight text-left">
                     {part.trim()}
                   </div>
                 ))}
               </p>
             )}
             {slide.phoneNumber && (
-              <p className="text-sm text-black drop-shadow-lg font-semibold">📞 {slide.phoneNumber}</p>
+              <p className="text-sm text-black drop-shadow-lg font-semibold text-left">{slide.phoneNumber}</p>
             )}
           </div>
         </div>
@@ -243,7 +243,7 @@ export const Carousel = forwardRef<CarouselHandle, CarouselProps>(
         aria-labelledby={`carousel-heading-${id}`}
       >
         <ul
-          className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
+          className="absolute flex transition-transform duration-1000 ease-in-out"
           style={{
             transform: `translateX(-${current * (100 / slides.length)}%)`,
           }}
