@@ -4,7 +4,7 @@ import * as React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./OrganisingTeamSection.css";
-import { Carousel } from "@/components/ui/carousel";
+import { Carousel, CarouselHandle } from "@/components/ui/carousel";
 import AnimatedTeamCard from "./AnimatedTeamCard";
 
 const team = {
@@ -66,20 +66,19 @@ const team = {
         imageSrc: "/images/members/Ashwin.jpg"
     },
     allMembers: [
-        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "97469 24371", instagram: "https://www.instagram.com/_._manavi_._/", linkedin: "https://www.linkedin.com/in/manavi-p-576a8b279/" },
-        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", phoneNumber: "83174 63317", instagram: "https://www.instagram.com/sreenidhi_s.29?igsh=OHBvMjMzYWMyNGgz", linkedin: "http://www.linkedin.com/in/shreenidhi-s29" },
-        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "86604 61773", instagram: "https://www.instagram.com/__nithesh__03?igsh=MXZ1NzZuMGtndHNodw%3D%3D&utm_source=qr", linkedin: "http://www.linkedin.com/in/g-nithesh-495380311" },
-        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "80885 26961", instagram: "https://www.instagram.com/_iamthehonouredone/profilecard/?igsh=N29xOGhpeXkzbG01", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "89516 28426", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://www.linkedin.com/in/mayur-adithya-2324aa31b" },
+        { emoji: "🧑‍🎓", label: "Manavi P", role: "Web Dev", phoneNumber: "97469 24371", instagram: "https://www.instagram.com/_._manavi_._/", linkedin: "https://www.linkedin.com/in/manavi-p-576a8b279/", imageSrc: "/images/members/Manavi.jpg" },
+        { emoji: "🧑‍🎓", label: "S Shreenidhi", role: "Web Dev", phoneNumber: "83174 63317", instagram: "https://www.instagram.com/sreenidhi_s.29?igsh=OHBvMjMzYWMyNGgz", linkedin: "http://www.linkedin.com/in/shreenidhi-s29", imageSrc: "/images/members/S Shreenidhi.jpg" },
+        { emoji: "🧑‍🎓", label: "G Nithesh", role: "Web Dev", phoneNumber: "86604 61773", instagram: "https://www.instagram.com/__nithesh__03?igsh=MXZ1NzZuMGtndHNodw%3D%3D&utm_source=qr", linkedin: "http://www.linkedin.com/in/g-nithesh-495380311", imageSrc: "/images/members/G Nithesh.HEIC" },
+        { emoji: "🧑‍🎓", label: "Sachin Baluragi", role: "Web Dev", phoneNumber: "80885 26961", instagram: "https://www.instagram.com/_iamthehonouredone/profilecard/?igsh=N29xOGhpeXkzbG01", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/Sachin.jpg" },
+        { emoji: "🎨", label: "Mayur", role: "Design Team", phoneNumber: "89516 28426", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://www.linkedin.com/in/mayur-adithya-2324aa31b", imageSrc: "/images/members/Mayur.jpg" },
         { emoji: "🎨", label: "Niharika", role: "Design Team", phoneNumber: "93410 38834", instagram: "https://www.instagram.com/niharika__trivedi?igsh=MTVpNWQxemdjcjNxYw%3D%3D&utm_source=qr", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "86605 75694", instagram: "https://www.instagram.com/prasad.moulya", linkedin: "https://in.linkedin.com/in/moulya-b-9435632b5" },
-        { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "99727 59382", instagram: "https://www.instagram.com/moulika.k.reddy", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-        { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "86600 29131", instagram: "https://www.instagram.com/_.raksha.umashankar._", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+        { emoji: "🎨", label: "Moulya", role: "Design Team", phoneNumber: "86605 75694", instagram: "https://www.instagram.com/prasad.moulya", linkedin: "https://in.linkedin.com/in/moulya-b-9435632b5", imageSrc: "/images/members/moulya.jpg" },
+        { emoji: "🎨", label: "Moulika", role: "Design Team", phoneNumber: "99727 59382", instagram: "https://www.instagram.com/moulika.k.reddy", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/moulika.jpg" },
+        { emoji: "🎨", label: "Raksha", role: "Design Team", phoneNumber: "86600 29131", instagram: "https://www.instagram.com/_.raksha.umashankar._", linkedin: "https://www.linkedin.com/in/moulika-k-ba8694335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/raksha.JPG" },
         { emoji: "🎨", label: "Trisha", role: "Design Team", phoneNumber: "91423 32379", instagram: "https://www.instagram.com/trishaaa.10.___", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "85408 39078", instagram: "https://www.instagram.com/aastha_6696", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "🤝", label: "Harsh", role: "Sponsorship Team", phoneNumber: "98765 43221", instagram: "https://instagram.com/your_instagram_handle", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "93164 04353", instagram: "https://www.instagram.com/ahhmaddx_", linkedin: "https://linkedin.com/in/your_linkedin_handle" },
-        { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "91087 65555", instagram: "https://www.instagram.com/vivan_rajiv_336?igsh=ZXJ2bWVnM24wM2g0", linkedin: "https://www.linkedin.com/in/vivan-rajiv-yenagimath-950b4a2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+        { emoji: "🎨", label: "Aastha", role: "Design Team", phoneNumber: "85408 39078", instagram: "https://www.instagram.com/aastha_6696", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/aastha.jpg" },
+        { emoji: "📢", label: "Ahmad", role: "Marketing Team", phoneNumber: "93164 04353", instagram: "https://www.instagram.com/ahhmaddx_", linkedin: "https://linkedin.com/in/your_linkedin_handle", imageSrc: "/images/members/ahmad.jpg" },
+        { emoji: "📢", label: "Vivan", role: "Marketing Team", phoneNumber: "91087 65555", instagram: "https://www.instagram.com/vivan_rajiv_336?igsh=ZXJ2bWVnM24wM2g0", linkedin: "https://www.linkedin.com/in/vivan-rajiv-yenagimath-950b4a2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", imageSrc: "/images/members/vivan_rajiv_336.jpg" },
         // ...add more as needed
     ],
 };
@@ -131,6 +130,8 @@ export const OrganisingTeamSection = () => {
             controls.start({ opacity: 0, y: 60 });
         }
     }, [inView, controls]);
+
+    const carouselRef = React.useRef<CarouselHandle>(null);
 
     return (
         <motion.section
@@ -196,19 +197,39 @@ export const OrganisingTeamSection = () => {
 
                 <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 organising-team-title" style={{ marginTop: '2.5rem' }}>Meet the Entire Team</h2>
                 <div className="flex justify-center" style={{ marginBottom: '4rem' }}>
-                    <div className="relative overflow-hidden w-full h-full py-20">
+                    <div className="relative overflow-hidden w-full h-full py-20 flex items-center">
+                        {/* Left Button */}
+                        <button
+                            className="absolute left-0 z-20 w-12 h-12 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
+                            style={{ top: '50%', transform: 'translateY(-50%)' }}
+                            onClick={() => carouselRef.current?.handlePreviousClick?.()}
+                            aria-label="Previous"
+                        >
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        {/* Carousel */}
                         <Carousel
+                            ref={carouselRef}
                             slides={team.allMembers.map((member, index) => ({
                                 title: member.label,
                                 subtitle: member.role,
                                 button: "Explore Component",
-                                src: "/images/memb.png",
+                                src: member.imageSrc || "/images/memb.png",
                                 instagram: member.instagram,
                                 linkedin: member.linkedin,
                                 phoneNumber: member.phoneNumber || "Contact via social media"
                             }))}
-                            autoplayInterval={3000}
+                            autoplay={false}
                         />
+                        {/* Right Button */}
+                        <button
+                            className="absolute right-0 z-20 w-12 h-12 flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full focus:outline-none transition duration-200"
+                            style={{ top: '50%', transform: 'translateY(-50%)' }}
+                            onClick={() => carouselRef.current?.handleNextClick?.()}
+                            aria-label="Next"
+                        >
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                        </button>
                     </div>
                 </div>
             </div>
