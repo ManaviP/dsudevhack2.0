@@ -196,8 +196,7 @@ export const OrganisingTeamSection = () => {
                     {/* Faculty Coordinator */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 }}
                     >
                         <AnimatedTeamCard member={team.professorCoordinator} delay={0.05} cardIndex={0} />
@@ -208,8 +207,7 @@ export const OrganisingTeamSection = () => {
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.35, ease: 'easeOut', delay: 0.1 + (idx * 0.05) }}
                         >
                             <AnimatedTeamCard member={member} delay={0.1 + (idx * 0.05)} cardIndex={1 + idx} />
@@ -221,8 +219,7 @@ export const OrganisingTeamSection = () => {
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.35, ease: 'easeOut', delay: 0.25 }}
                         >
                             <AnimatedTeamCard member={member} delay={0.25} cardIndex={4} />
@@ -232,8 +229,7 @@ export const OrganisingTeamSection = () => {
                     {/* Design Team Head */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35, ease: 'easeOut', delay: 0.3 }}
                     >
                         <AnimatedTeamCard member={team.designTeamHead} delay={0.3} cardIndex={5} />
@@ -285,7 +281,6 @@ export const OrganisingTeamSection = () => {
                         key={activeTab}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
                         className="team-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
                     >
