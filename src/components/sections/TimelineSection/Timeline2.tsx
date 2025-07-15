@@ -1,185 +1,74 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import "./timeline.css";
 import items from "./schedule";
-import Reveal from "./Reveal";
-import { useTheme } from "../../../lib/theme-context";
-import { motion, AnimatePresence } from "framer-motion";
+import ScheduleItem from "./ScheduleItem";
+import "./timeline.css";
 
+// Helper to group items by section (e.g., Morning, Afternoon, Evening)
+const getSection = (index: number) => {
+  // Example: you can adjust these splits as needed
+  if (index < 3) return "Morning";
+  if (index < 6) return "Afternoon";
+  return "Evening";
+};
+
+const sectionOrder = ["Morning", "Afternoon", "Evening"];
 
 export default function Timeline2() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const { theme } = useTheme();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const scrollPosition = window.scrollY + windowHeight / 2;
-
       const activeIndex = items.findIndex((item) => {
         const cardElement = document.getElementById(`card-${item.key}`);
         if (!cardElement) return false;
-
         const cardTop = cardElement.offsetTop;
         const cardBottom = cardTop + cardElement.offsetHeight;
-
         return scrollPosition >= cardTop && scrollPosition < cardBottom;
       });
-
       setActiveCardIndex(activeIndex === -1 ? 0 : activeIndex);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [items]);
+  }, []);
 
-  return (
-    <motion.div
-      className="mt-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="timeline flex justify-center items-center mx-auto">
-        <div className="relative w-full">
-          <motion.div
-            className="outer flex flex-col items-center m-5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {items.map((item, index) => (
-              <TimelineCard
-                key={item.key}
-                item={item}
-                index={index}
-                active={index <= activeCardIndex}
-                activeCard={index === activeCardIndex}
-                theme={theme}
-              />
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-const TimelineCard = ({ item, index, active, activeCard, theme }: any) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-50% 0px",
+  // Group items by section
+  const sectionedItems: Record<string, typeof items> = { Morning: [], Afternoon: [], Evening: [] };
+  items.forEach((item, i) => {
+    const section = getSection(i);
+    sectionedItems[section].push({ ...item, index: i });
   });
 
-  // Animation variants for the timeline card
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      x: item.key % 2 === 0 ? -50 : 50,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: index * 0.2,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      y: 0,
-      transition: {
-        duration: 0
-      }
-    }
-  };
-
-  // Animation variants for the dot
-  const dotVariants = {
-    initial: { scale: 0 },
-    animate: {
-      scale: activeCard ? 1.5 : 1,
-      transition: {
-        duration: 0.4,
-        type: "spring",
-        stiffness: 300
-      }
-    }
-  };
-
-  // Animation variants for the info card
-  const infoVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: index * 0.2 + 0.3
-      }
-    },
-    hover: {
-      scale: 1,
-      boxShadow: "none",
-      transition: { duration: 0 }
-    }
-  };
-
   return (
-    <motion.div
-      id={`card-${item.key}`}
-      className={`box ${theme === 'light' ? 'light' : ''} ${activeCard ? "active-card" : ""} ${
-        active ? "active" : ""
-      }`}
-      ref={ref}
-      variants={cardVariants}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-    >
-      <motion.div
-        className="dot-animation"
-        variants={dotVariants}
-        initial="initial"
-        animate="animate"
-      />
-
-      <Reveal even={item.key % 2 !== 0}>
-        <motion.div
-          className="info glassy-div"
-          variants={infoVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          <motion.h3
-            className="title md:text-lg text-md"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: index * 0.2 + 0.5 }}
+    <div className="mt-8 w-full max-w-3xl mx-auto px-2">
+      {sectionOrder.map((section) => (
+        <div key={section} className="mb-12 relative">
+          {/* Sticky section heading */}
+          <div
+            className="sticky top-0 z-20 text-2xl font-bold py-2 px-4 mb-4 rounded-xl bg-gradient-to-r from-gray-100/80 to-gray-200/80 text-gray-700 shadow backdrop-blur border border-gray-200"
+            style={{ backdropFilter: 'blur(8px)' }}
           >
-            {item.title}
-          </motion.h3>
-          <motion.div
-            className="flex flex-col data"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 + 0.6 }}
-          >
-            <h3 className={`md:text-xl font-semibold py-2 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
-              {item.cardTitle}
-            </h3>
-            <p className={theme === 'light' ? 'text-gray-600' : 'text-gray-300'}>
-              {item.cardDetailedText}
-            </p>
-          </motion.div>
-        </motion.div>
-      </Reveal>
-    </motion.div>
+            {section}
+          </div>
+          <div className="flex flex-col gap-0">
+            {sectionedItems[section].map((item, idx) => (
+              <ScheduleItem
+                key={item.key}
+                time={item.time}
+                title={item.cardTitle}
+                type={item.type}
+                description={item.cardDetailedText}
+                active={item.index === activeCardIndex}
+                section={section}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   );
-};
+}
