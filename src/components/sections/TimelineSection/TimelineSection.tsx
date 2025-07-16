@@ -1,4 +1,5 @@
 import { Timeline } from '../../Timeline';
+import { Boxes } from "../../ui/background-boxes";
 
 const timelineData = [
   {
@@ -77,8 +78,14 @@ const timelineData = [
 
 export const TimelineSection = () => {
   return (
-    <div id="timeline" className="timeline-section-bg rounded-xl w-full py-2 pb-12">
-      <Timeline data={timelineData} />
+    <div id="timeline" className="relative w-full overflow-hidden py-2 pb-12">
+      <div className="absolute inset-0 z-0">
+        <Boxes />
+      </div>
+      <div className="relative z-10 pointer-events-none">
+        <h2 className="text-2xl md:text-5xl font-bold text-white text-center mt-16 mb-2">Timeline</h2>
+        <Timeline data={timelineData} />
+      </div>
     </div>
   );
 };
