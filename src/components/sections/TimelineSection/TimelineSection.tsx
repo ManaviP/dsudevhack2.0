@@ -5,8 +5,8 @@ const timelineData = [
     title: 'Registration starts',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">The Race Begins — Register. Team Up. Get Set to Hack!</div>
-        <div className="text-sm text-blue-500">1st July 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">The Race Begins — Register. Team Up. Get Set to Hack!</div>
+        <div className="text-sm md:text-lg text-blue-500">1st July 2025</div>
       </div>
     ),
   },
@@ -14,8 +14,8 @@ const timelineData = [
     title: 'Idea submissions start',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">Time to Spark Ideas — Let the Innovation Flow!</div>
-        <div className="text-sm text-blue-500">25th July 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">Time to Spark Ideas — Let the Innovation Flow!</div>
+        <div className="text-sm md:text-lg text-blue-500">25th July 2025</div>
       </div>
     ),
   },
@@ -23,8 +23,8 @@ const timelineData = [
     title: 'Registration Deadline',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">Last Call to Enter the Arena!</div>
-        <div className="text-sm text-blue-500">18th August 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">Last Call to Enter the Arena!</div>
+        <div className="text-sm md:text-lg text-blue-500">18th August 2025</div>
       </div>
     ),
   },
@@ -32,8 +32,8 @@ const timelineData = [
     title: 'Idea Submission Deadline',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">Ideas Lock In — Let the Best Concepts Win!</div>
-        <div className="text-sm text-blue-500">20th August 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">Ideas Lock In — Let the Best Concepts Win!</div>
+        <div className="text-sm md:text-lg text-blue-500">20th August 2025</div>
       </div>
     ),
   },
@@ -41,8 +41,8 @@ const timelineData = [
     title: 'Shortlisted Teams Announcement',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">And the Chosen Ones Are... Meet the Finalists!</div>
-        <div className="text-sm text-blue-500">1st September 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">And the Chosen Ones Are... Meet the Finalists!</div>
+        <div className="text-sm md:text-lg text-blue-500">1st September 2025</div>
       </div>
     ),
   },
@@ -50,8 +50,8 @@ const timelineData = [
     title: 'Hacking Period Starts',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">The Code War Begins — Hack Like There’s No Tomorrow!</div>
-        <div className="text-sm text-blue-500">12th September</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">The Code War Begins — Hack Like There’s No Tomorrow!</div>
+        <div className="text-sm md:text-lg text-blue-500">12th September</div>
       </div>
     ),
   },
@@ -59,8 +59,8 @@ const timelineData = [
     title: 'Final Submission',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">One Last Push — Deliver Your Innovation!</div>
-        <div className="text-sm text-blue-500">13th September 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">One Last Push — Deliver Your Innovation!</div>
+        <div className="text-sm md:text-lg text-blue-500">13th September 2025</div>
       </div>
     ),
   },
@@ -68,8 +68,8 @@ const timelineData = [
     title: 'Final Evaluation Result',
     content: (
       <div>
-        <div className="font-semibold text-base mb-1">The Verdict is In — Witness the Best Rise!</div>
-        <div className="text-sm text-blue-500">13th September 2025</div>
+        <div className="font-semibold text-base md:text-2xl text-white mb-1">The Verdict is In — Witness the Best Rise!</div>
+        <div className="text-sm md:text-lg text-blue-500">13th September 2025</div>
       </div>
     ),
   },
@@ -77,8 +77,8 @@ const timelineData = [
 
 export const TimelineSection = () => {
   return (
-    <section id="timeline" className="timeline-section-bg">
+    <div id="timeline" className="timeline-section-bg rounded-xl w-full py-2 pb-12">
       <Timeline data={timelineData} />
-    </section>
+    </div>
   );
 };

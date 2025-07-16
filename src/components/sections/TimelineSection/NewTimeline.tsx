@@ -11,13 +11,13 @@ export const NewTimeline: React.FC = () => {
 
   useEffect(() => {
     if (!timelineRef.current) return;
-    
+
     const heading = timelineRef.current.querySelector('.new-timeline-heading');
 
     if (heading) {
       // Reset animation state
       heading.classList.remove('typewriter');
-      
+
       // Small delay to ensure the class is removed before re-adding
       setTimeout(() => {
         ScrollTrigger.create({
@@ -213,8 +213,8 @@ export const NewTimeline: React.FC = () => {
 
       // Remove event listeners
       columns.forEach((column) => {
-        column.removeEventListener('mouseenter', () => {});
-        column.removeEventListener('mouseleave', () => {});
+        column.removeEventListener('mouseenter', () => { });
+        column.removeEventListener('mouseleave', () => { });
       });
 
       // Kill any running GSAP animations
@@ -258,7 +258,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -280,7 +280,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -302,7 +302,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -324,7 +324,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -349,7 +349,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -370,7 +370,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -392,7 +392,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -414,7 +414,7 @@ export const NewTimeline: React.FC = () => {
           </div>
           <div className="timeline-arrow">
             <svg className="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5 12H19M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <div className="timeline-title">
@@ -429,7 +429,7 @@ export const NewTimeline: React.FC = () => {
           </div>
         </div>
 
-        
+
       </div>
 
 

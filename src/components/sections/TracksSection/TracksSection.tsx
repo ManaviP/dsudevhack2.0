@@ -87,10 +87,10 @@ export const TracksSection = () => {
   ];
 
   return (
-    <section id="tracks" className="tracks-section">
-      <div className="container">
-        <h2 className="tracks-title">Tracks</h2>
-        <div className="tracks-grid">
+    <section id="tracks" className="tracks-section mb-0 pb-12">
+      <div className="container mb-0 pb-0">
+        <h2 className="tracks-title mb-6">Tracks</h2>
+        <div className="tracks-grid mb-0 pb-0">
           {tracks.map((track, idx) => (
             <TrackCard track={track} index={idx} key={idx} />
           ))}

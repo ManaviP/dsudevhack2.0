@@ -103,18 +103,18 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         <div className="absolute bottom-4 left-4 z-20 animate-smooth group-hover:opacity-0 group-hover:transform group-hover:translate-y-4 text-left">
           <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg max-w-xs min-w-[180px] w-fit border border-white/20 shadow-md text-left">
             <h2 className="text-xl font-bold text-black mb-1 drop-shadow-lg text-left">{title}</h2>
-            {subtitle && (
+          {subtitle && (
               <p className="text-base text-black mb-0.5 drop-shadow-lg text-left">
-                {subtitle.split('&').map((part, index) => (
+              {subtitle.split('&').map((part, index) => (
                   <div key={index} className="leading-tight text-left">
-                    {part.trim()}
-                  </div>
-                ))}
-              </p>
-            )}
-            {slide.phoneNumber && (
+                  {part.trim()}
+                </div>
+              ))}
+            </p>
+          )}
+          {slide.phoneNumber && (
               <p className="text-sm text-black drop-shadow-lg font-semibold text-left">{slide.phoneNumber}</p>
-            )}
+          )}
           </div>
         </div>
 
@@ -145,14 +145,14 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         )}
         {/* Logo Box - show on hover */}
         <div className="absolute w-[25%] h-[25%] bottom-[-25%] left-[-25%] p-4 text-right bg-white/60 border-t-2 border-r border-white rounded-custom shadow-lg transform-origin-bottom-left animate-smooth-slow transition-delay-400 group-hover:bottom-[-0.1em] group-hover:left-[-0.1em] opacity-0 group-hover:opacity-100">
-          <div className="relative w-10 h-10">
-            <img
-              src="/images/logos/logoo9.png"
-              alt="Logo"
-              className="w-full h-full object-contain"
-            />
+            <div className="relative w-10 h-10">
+              <img
+                src="/images/logos/logoo9.png"
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
           </div>
-        </div>
         {/* Decorative Box - show on hover */}
         <div className="absolute w-[8%] h-[8%] bottom-[-8%] left-[-8%] bg-white/60 border-t-2 border-r border-white rounded-custom shadow-lg transform-origin-bottom-left animate-smooth-slow transition-delay-600 group-hover:bottom-[-0.1em] group-hover:left-[-0.1em] opacity-0 group-hover:opacity-100" />
       </li>
@@ -197,68 +197,68 @@ export interface CarouselHandle {
 
 export const Carousel = forwardRef<CarouselHandle, CarouselProps>(
   ({
-    slides,
-    loop = true,
-    autoplay = true,
-    autoplayInterval = 1500,
+  slides,
+  loop = true,
+  autoplay = true,
+  autoplayInterval = 1500,
   }, ref) => {
-    const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(0);
 
-    const handlePreviousClick = () => {
-      const previous = current - 1;
-      setCurrent(previous < 0 ? slides.length - 1 : previous);
-    };
+  const handlePreviousClick = () => {
+    const previous = current - 1;
+    setCurrent(previous < 0 ? slides.length - 1 : previous);
+  };
 
-    const handleNextClick = () => {
-      const next = current + 1;
-      setCurrent(next === slides.length ? 0 : next);
-    };
+  const handleNextClick = () => {
+    const next = current + 1;
+    setCurrent(next === slides.length ? 0 : next);
+  };
 
-    const handleSlideClick = (index: number) => {
-      if (current !== index) {
-        setCurrent(index);
-      }
-    };
+  const handleSlideClick = (index: number) => {
+    if (current !== index) {
+      setCurrent(index);
+    }
+  };
 
     useImperativeHandle(ref, () => ({
       handlePreviousClick,
       handleNextClick,
     }));
 
-    useEffect(() => {
-      if (!autoplay) return;
+  useEffect(() => {
+    if (!autoplay) return;
 
-      const interval = setInterval(() => {
-        handleNextClick();
-      }, autoplayInterval);
+    const interval = setInterval(() => {
+      handleNextClick();
+    }, autoplayInterval);
 
-      return () => clearInterval(interval);
-    }, [autoplay, autoplayInterval, handleNextClick]);
+    return () => clearInterval(interval);
+  }, [autoplay, autoplayInterval, handleNextClick]);
 
-    const id = useId();
+  const id = useId();
 
-    return (
-      <div
-        className="relative w-full h-[80vw] sm:w-[70vmin] sm:h-[70vmin] mx-auto max-w-2xl"
-        aria-labelledby={`carousel-heading-${id}`}
-      >
-        <ul
+  return (
+    <div
+      className="relative w-full h-[80vw] sm:w-[70vmin] sm:h-[70vmin] mx-auto max-w-2xl"
+      aria-labelledby={`carousel-heading-${id}`}
+    >
+      <ul
           className="absolute flex transition-transform duration-1000 ease-in-out"
-          style={{
-            transform: `translateX(-${current * (100 / slides.length)}%)`,
-          }}
-        >
-          {slides.map((slide, index) => (
-            <Slide
-              key={index}
-              slide={slide}
-              index={index}
-              current={current}
-              handleSlideClick={handleSlideClick}
-            />
-          ))}
-        </ul>
-      </div>
-    );
-  }
+        style={{
+          transform: `translateX(-${current * (100 / slides.length)}%)`,
+        }}
+      >
+        {slides.map((slide, index) => (
+          <Slide
+            key={index}
+            slide={slide}
+            index={index}
+            current={current}
+            handleSlideClick={handleSlideClick}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
 );
