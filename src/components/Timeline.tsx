@@ -18,15 +18,8 @@ interface TimelineEntry {
   content: React.ReactNode;
 }
 
-// 6 custom hex colors for timeline titles
-const timelineTitleColors = [
-  "#93c5fd", // blue
-  "#f9a8d4", // pink
-  "#86efac", // green
-  "#fde047", // yellow
-  "#fca5a5", // red
-  "#d8b4fe", // purple
-];
+// White color for all timeline titles
+const timelineTitleColor = "#ffffff";
 
 // Card component for timeline stages
 const TimelineCard = ({ title, subtitle, date, color, className = "" }: { title: string, subtitle: string, date: string, color: string, className?: string }) => (
@@ -35,7 +28,7 @@ const TimelineCard = ({ title, subtitle, date, color, className = "" }: { title:
       <div className="brutal-subscribe__container">
         <div className="brutal-subscribe__header">
           <span className="brutal-subscribe__title" style={{ color }}>{title}</span>
-          <span className="brutal-subscribe__subtitle">{subtitle}</span>
+          <span className="brutal-subtitle">{subtitle}</span>
         </div>
         <form className="brutal-subscribe__form" onSubmit={e => e.preventDefault()}>
           <button type="button" className="brutal-subscribe__button">{date}</button>
@@ -102,9 +95,9 @@ const StyledWrapper = styled.div`
     position: relative;
     z-index: 1;
   }
-  .brutal-subscribe__subtitle {
+  .brutal-subtitle {
     display: block;
-    font-size: 14px;
+    font-size: 18px;
     position: relative;
     z-index: 1;
   }
@@ -150,8 +143,8 @@ const StyledWrapper = styled.div`
     .brutal-subscribe__title {
       font-size: 22px;
     }
-    .brutal-subscribe__subtitle {
-      font-size: 12px;
+    .brutal-subtitle {
+      font-size: 14px;
     }
     .brutal-subscribe__form {
       padding: 10px;
@@ -273,7 +266,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* Left card (even) */}
                   <div className={`w-1/2 ${isLeft ? 'justify-end pr-8 flex' : 'justify-end pr-8 invisible'}`}>
                     {isLeft && (
-                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColors[index % timelineTitleColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
+                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
                     )}
                   </div>
                   {/* Center bar and circle always centered */}
@@ -289,7 +282,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* Right card (odd) */}
                   <div className={`w-1/2 ${!isLeft ? 'justify-start pl-8 flex' : 'justify-start pl-8 invisible'}`}>
                     {!isLeft && (
-                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColors[index % timelineTitleColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
+                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
                     )}
                   </div>
                 </div>
@@ -309,7 +302,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                     </div>
                   </div>
                   <div className="flex-1 ml-4">
-                    <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColors[index % timelineTitleColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
+                    <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
                   </div>
                 </div>
               </>
