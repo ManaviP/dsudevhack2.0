@@ -65,6 +65,15 @@ const TimelineCard = ({ title, subtitle, date, color, className = "" }: { title:
   );
 };
 
+// Add a function to generate the glow style for the circle
+const getGlowStyle = (color: string, isActive: boolean) =>
+  isActive
+    ? {
+      boxShadow: `0 0 24px 8px ${color}, 0 0 60px 16px ${color}55`,
+      border: `2px solid ${color}`,
+    }
+    : {};
+
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -210,6 +219,26 @@ const StyledWrapper = styled.div`
   }
 `;
 
+// Add pulsing glow animation CSS
+const glowAnimationStyle = `
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 6px 1px var(--glow-color), 0 0 10px 2px var(--glow-color-alpha); }
+  50% { box-shadow: 0 0 10px 2px var(--glow-color), 0 0 16px 4px var(--glow-color-alpha); }
+  100% { box-shadow: 0 0 6px 1px var(--glow-color), 0 0 10px 2px var(--glow-color-alpha); }
+}
+.glow-animate {
+  animation: pulse-glow 2.0s infinite;
+}
+`;
+
+// Inject the animation style into the document head
+if (typeof window !== 'undefined' && !document.getElementById('timeline-glow-style')) {
+  const style = document.createElement('style');
+  style.id = 'timeline-glow-style';
+  style.innerHTML = glowAnimationStyle;
+  document.head.appendChild(style);
+}
+
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -264,7 +293,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Ensure first circle is active on mount
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
@@ -307,7 +336,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   </div>
                   {/* Center bar and circle always centered */}
                   <div className="flex flex-col items-center z-10 md:w-0 md:min-w-[80px] md:max-w-[80px] md:items-center items-start">
-                    <div className="h-10 w-10 md:h-16 md:w-16 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative md:mx-auto ml-2 z-20">
+                    <div
+                      className={`h-10 w-10 md:h-16 md:w-16 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative md:mx-auto ml-2 z-20 glow-animate`}
+                      style={
+                        ({
+                          ...getGlowStyle(cardColors[index % cardColors.length], true),
+                          '--glow-color': cardColors[index % cardColors.length],
+                          '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
+                        } as any) as React.CSSProperties
+                      }
+                    >
                       <img
                         src={`/images/time circles/${index + 1}.png`}
                         alt={`Timeline ${index + 1}`}
@@ -329,7 +367,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="flex flex-col items-center w-16 flex-shrink-0 z-10">
-                    <div className="h-10 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative z-20">
+                    <div
+                      className={`h-10 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative z-20 glow-animate`}
+                      style={
+                        ({
+                          ...getGlowStyle(cardColors[index % cardColors.length], true),
+                          '--glow-color': cardColors[index % cardColors.length],
+                          '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
+                        } as any) as React.CSSProperties
+                      }
+                    >
                       <img
                         src={`/images/time circles/${index + 1}.png`}
                         alt={`Timeline ${index + 1}`}
