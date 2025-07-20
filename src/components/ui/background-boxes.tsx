@@ -35,7 +35,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
             {rows.map((_, i) => (
                 <motion.div
                     key={`row` + i}
-                    className="relative h-8 w-16 border-l border-slate-700"
+                    className="relative h-16 w-16 border-l border-slate-700"
                 >
                     {cols.map((_, j) => (
                         <motion.div
@@ -47,7 +47,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                                 transition: { duration: 2 },
                             }}
                             key={`col` + j}
-                            className="relative h-8 w-16 border-t border-r border-slate-700"
+                            className="relative h-16 w-16 border-t border-r border-slate-700"
                         >
                             {j % 2 === 0 && i % 2 === 0 ? (
                                 <svg

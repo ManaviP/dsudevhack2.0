@@ -78,11 +78,11 @@ const timelineData = [
 
 export const TimelineSection = () => {
   return (
-    <div id="timeline" className="relative w-full overflow-hidden py-2 pb-12">
+    <div id="timeline" className="relative w-full overflow-hidden py-2 pb-32">
       <div className="absolute inset-0 z-0">
         <Boxes />
       </div>
-      <div className="relative z-10">
+      <div className="relative z-0">
         <Timeline data={timelineData} />
       </div>
     </div>

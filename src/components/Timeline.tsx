@@ -18,159 +18,195 @@ interface TimelineEntry {
   content: React.ReactNode;
 }
 
-// White color for all timeline titles
-const timelineTitleColor = "#ffffff";
+// Color palette for timeline cards
+const cardColors = [
+  "#93c5fd", // blue
+  "#f9a8d4", // pink
+  "#86efac", // green
+  "#fde047", // yellow
+  "#fca5a5", // red
+  "#d8b4fe", // purple
+  "#a5b4fc", // indigo
+  "#c4b5fd", // violet
+];
 
 // Card component for timeline stages
-const TimelineCard = ({ title, subtitle, date, color, className = "" }: { title: string, subtitle: string, date: string, color: string, className?: string }) => (
-  <StyledWrapper className={className}>
-    <div className="brutal-subscribe">
-      <div className="brutal-subscribe__container">
-        <div className="brutal-subscribe__header">
-          <span className="brutal-subscribe__title" style={{ color }}>{title}</span>
-          <span className="brutal-subtitle">{subtitle}</span>
+const TimelineCard = ({ title, subtitle, date, color, className = "" }: { title: string, subtitle: string, date: string, color: string, className?: string }) => {
+  // Extract day and month from date string
+  const extractDateInfo = (dateStr: string) => {
+    // Handle different date formats
+    if (dateStr.includes('1st')) return { day: '1', month: 'JUL' };
+    if (dateStr.includes('25th')) return { day: '25', month: 'JUL' };
+    if (dateStr.includes('18th')) return { day: '18', month: 'AUG' };
+    if (dateStr.includes('20th')) return { day: '20', month: 'AUG' };
+    if (dateStr.includes('1st September')) return { day: '1', month: 'SEP' };
+    if (dateStr.includes('12th September')) return { day: '12', month: 'SEP' };
+    if (dateStr.includes('13th September')) return { day: '13', month: 'SEP' };
+    return { day: '25', month: 'SEP' }; // fallback
+  };
+
+  const { day, month } = extractDateInfo(date);
+
+  return (
+    <StyledWrapper className={className} style={{ '--card-color': color } as React.CSSProperties}>
+      <div className="parent">
+        <div className="card">
+          <div className="content-box">
+            <span className="card-title">{title}</span>
+            <p className="card-content">{subtitle}</p>
+          </div>
+          <div className="date-box">
+            <span className="month">{month}</span>
+            <span className="date">{day}</span>
+          </div>
         </div>
-        <form className="brutal-subscribe__form" onSubmit={e => e.preventDefault()}>
-          <button type="button" className="brutal-subscribe__button">{date}</button>
-        </form>
       </div>
-    </div>
-  </StyledWrapper>
-);
+    </StyledWrapper>
+  );
+};
 
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  .brutal-subscribe__container {
+  
+  .parent {
+    width: 300px;
+    padding: 20px;
+    perspective: 1000px;
+  }
+
+  @media (min-width: 768px) {
+    .parent {
+      width: 400px;
+      padding: 25px;
+    }
+  }
+
+  .card {
+    padding-top: 30px;
+    border: 3px solid #141414;
+    transform-style: preserve-3d;
+    background: linear-gradient(135deg, #0000 18.75%, #f3f3f3 0 31.25%, #0000 0),
+      repeating-linear-gradient(45deg, #f3f3f3 -6.25% 6.25%, #141414 0 18.75%);
+    background-size: 60px 60px;
+    background-position:
+      0 0,
+      0 0;
+    background-color: #141414;
     width: 100%;
-    max-width: 500px;
-    background-color: #fff;
-    background-image: 
-      linear-gradient(rgba(0, 0, 0, 0.5) 2px, transparent 2px),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.5) 2px, transparent 2px);
-    background-size: 20px 20px;
-    border: 5px solid #000;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.605);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
+    transition: all 0.5s ease-in-out;
   }
-  .brutal-subscribe__container:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.2.5);
+
+  .card:hover {
+    background-position:
+      -100px 100px,
+      -100px 100px;
+    transform: rotate3d(0.5, 1, 0, 30deg);
   }
-  .brutal-subscribe__header {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
+
+  .content-box {
+    background: var(--card-color, #8ed500);
+    transition: all 0.5s ease-in-out;
+    padding: 40px 25px 20px 25px;
+    transform-style: preserve-3d;
   }
-  .brutal-subscribe__header::before {
-    content: "";
+
+  .content-box .card-title {
+    display: inline-block;
+    color: #141414;
+    font-size: 25px;
+    font-weight: 900;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 50px);
+  }
+
+  @media (min-width: 768px) {
+    .content-box .card-title {
+      font-size: 32px;
+    }
+  }
+
+  .content-box .card-title:hover {
+    transform: translate3d(0px, 0px, 60px);
+  }
+
+  .content-box .card-content {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #141414;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 30px);
+  }
+
+  @media (min-width: 768px) {
+    .content-box .card-content {
+      font-size: 16px;
+    }
+  }
+
+  .content-box .card-content:hover {
+    transform: translate3d(0px, 0px, 60px);
+  }
+
+
+
+  .date-box {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-      45deg,
-      #ff0 0,
-      #ff0 10px,
-      #000 10px,
-      #000 20px
-    );
-    opacity: 0.1;
-    animation: stripe-animation 20s linear infinite;
-  }
-  @keyframes stripe-animation {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  .brutal-subscribe__title {
-    display: block;
-    font-size: 36px;
-    font-weight: bold;
-    position: relative;
-    z-index: 1;
-  }
-  .brutal-subtitle {
-    display: block;
-    font-size: 18px;
-    position: relative;
-    z-index: 1;
-  }
-  .brutal-subscribe__form {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  .brutal-subscribe__button {
-    width: 60%;
+    top: 20px;
+    right: 30px;
+    height: 60px;
+    width: 60px;
+    background: #141414;
+    border: 1px solid var(--card-color, #8ed500);
     padding: 10px;
-    background-color: #000;
-    color: #fff;
-    border: 3px solid #000;
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    transform: translate3d(0px, 0px, 80px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 17px 10px -10px;
+  }
+
+  .date-box span {
     display: block;
-    margin: 0 auto;
+    text-align: center;
   }
 
-  .brutal-subscribe__button:hover {
-    background-color: #ff0;
-    color: #000;
+  .date-box .month {
+    color: var(--card-color, #8ed500);
+    font-size: 9px;
+    font-weight: 700;
   }
 
-  .brutal-subscribe__button:active {
-    transform: scale(0.95);
+  .date-box .date {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--card-color, #8ed500);
   }
+
   @media (max-width: 768px) {
-    .brutal-subscribe__container {
-      max-width: 240px;
-      width: 100%;
-      padding: 0 0px;
-    }
-    .brutal-subscribe__header {
-      padding: 12px;
-    }
-    .brutal-subscribe__title {
-      font-size: 22px;
-    }
-    .brutal-subtitle {
-      font-size: 14px;
-    }
-    .brutal-subscribe__form {
+    .parent {
+      width: 240px;
       padding: 10px;
     }
-    .brutal-subscribe__button {
-      font-size: 14px;
-      padding: 8px;
-      width: 80%;
+    
+    .content-box .card-title {
+      font-size: 20px;
     }
-  }
-  @media (max-width: 500px) {
-    .brutal-subscribe__container {
-      max-width: 240px;
-      width: 100%;
+    
+    .content-box .card-content {
+      font-size: 10px;
     }
-  }
-  @keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
-  }
-  .brutal-subscribe__container:hover .brutal-subscribe__title {
-    animation: glitch 0.3s infinite;
+    
+    .date-box {
+      height: 50px;
+      width: 50px;
+      top: 20px;
+      right: 20px;
+    }
+    
+    .date-box .date {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -266,7 +302,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* Left card (even) */}
                   <div className={`w-1/2 ${isLeft ? 'justify-end pr-8 flex' : 'justify-end pr-8 invisible'}`}>
                     {isLeft && (
-                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
+                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={cardColors[index % cardColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
                     )}
                   </div>
                   {/* Center bar and circle always centered */}
@@ -282,7 +318,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* Right card (odd) */}
                   <div className={`w-1/2 ${!isLeft ? 'justify-start pl-8 flex' : 'justify-start pl-8 invisible'}`}>
                     {!isLeft && (
-                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
+                      <TimelineCard title={item.title} subtitle={subtitle} date={date} color={cardColors[index % cardColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
                     )}
                   </div>
                 </div>
@@ -302,7 +338,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                     </div>
                   </div>
                   <div className="flex-1 ml-4">
-                    <TimelineCard title={item.title} subtitle={subtitle} date={date} color={timelineTitleColor} className="group-hover:shadow-2xl group-hover:scale-105" />
+                    <TimelineCard title={item.title} subtitle={subtitle} date={date} color={cardColors[index % cardColors.length]} className="group-hover:shadow-2xl group-hover:scale-105" />
                   </div>
                 </div>
               </>
