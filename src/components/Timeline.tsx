@@ -195,6 +195,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   // Progress bar animation logic
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
   const desktopItemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const mobileItemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
@@ -204,8 +205,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           // Check if we're on mobile (screen width < 768px)
-          const isMobile = window.innerWidth < 768;
-          const refs = isMobile ? mobileItemRefs : desktopItemRefs;
+          const mobileCheck = window.innerWidth < 768;
+          setIsMobile(mobileCheck);
+          const refs = mobileCheck ? mobileItemRefs : desktopItemRefs;
 
           if (refs.current.length === 0) return;
 
@@ -321,7 +323,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             <motion.div
               animate={{ height: ((activeIndex + 1) / data.length) * height, opacity: 1 }}
               transition={{
-                duration: window.innerWidth < 768 ? 1.5 : 0.8,
+                duration: isMobile ? 1.2 : 0.6,
                 ease: 'easeInOut'
               }}
               className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
