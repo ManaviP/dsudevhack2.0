@@ -243,6 +243,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState(0);
+  const [progressHeight, setProgressHeight] = React.useState(0);
+  const [circleCenters, setCircleCenters] = React.useState<number[]>([]);
 
   React.useEffect(() => {
     if (ref.current) {
@@ -256,6 +258,39 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const [isMobile, setIsMobile] = React.useState(false);
   const desktopItemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const mobileItemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+
+  // Compute all circle centers on mobile
+  React.useEffect(() => {
+    const updateCenters = () => {
+      if (window.innerWidth >= 768) {
+        setCircleCenters([]);
+        return;
+      }
+      const timelineContainer = ref.current;
+      if (!timelineContainer) return;
+      const containerRect = timelineContainer.getBoundingClientRect();
+      const centers: number[] = [];
+      for (let i = 0; i < mobileItemRefs.current.length; i++) {
+        const item = mobileItemRefs.current[i];
+        if (item) {
+          const circle = item.querySelector('.rounded-full');
+          if (circle) {
+            const circleRect = circle.getBoundingClientRect();
+            const center = (circleRect.top - containerRect.top) + (circleRect.height / 2);
+            centers.push(center);
+          } else {
+            // fallback: use top of the item
+            const itemRect = item.getBoundingClientRect();
+            centers.push(itemRect.top - containerRect.top + (itemRect.height / 2));
+          }
+        }
+      }
+      setCircleCenters(centers);
+    };
+    updateCenters();
+    window.addEventListener('resize', updateCenters);
+    return () => window.removeEventListener('resize', updateCenters);
+  }, [data.length]);
 
   React.useEffect(() => {
     let ticking = false;
@@ -286,6 +321,19 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           const newActive = Math.floor(scrollProgress * refs.current.length);
           setActiveIndex(Math.min(newActive, refs.current.length - 1));
 
+          // Progress bar fill height logic
+          if (mobileCheck) {
+            // On mobile, fill up to the center of the current active circle
+            if (circleCenters.length > 0) {
+              setProgressHeight(circleCenters[Math.min(newActive, circleCenters.length - 1)] || 0);
+            } else {
+              setProgressHeight(0);
+            }
+          } else {
+            // On desktop, fill as before
+            setProgressHeight(((Math.min(newActive + 1, refs.current.length)) / refs.current.length) * containerHeight);
+          }
+
           ticking = false;
         });
         ticking = true;
@@ -298,7 +346,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [data.length]);
+  }, [data.length, circleCenters]);
 
   return (
     <div className="w-full font-sans md:px-10" ref={containerRef}>
@@ -337,13 +385,15 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* Center bar and circle always centered */}
                   <div className="flex flex-col items-center z-10 md:w-0 md:min-w-[80px] md:max-w-[80px] md:items-center items-start">
                     <div
-                      className={`h-10 w-10 md:h-16 md:w-16 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative md:mx-auto ml-2 z-20 glow-animate`}
+                      className={`h-10 w-10 md:h-16 md:w-16 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative md:mx-auto ml-2 z-20 ${index <= activeIndex ? 'glow-animate' : ''}`}
                       style={
-                        ({
-                          ...getGlowStyle(cardColors[index % cardColors.length], true),
-                          '--glow-color': cardColors[index % cardColors.length],
-                          '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
-                        } as any) as React.CSSProperties
+                        index <= activeIndex
+                          ? ({
+                            ...getGlowStyle(cardColors[index % cardColors.length], true),
+                            '--glow-color': cardColors[index % cardColors.length],
+                            '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
+                          } as any) as React.CSSProperties
+                          : undefined
                       }
                     >
                       <img
@@ -368,13 +418,15 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 >
                   <div className="flex flex-col items-center w-16 flex-shrink-0 z-10">
                     <div
-                      className={`h-10 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative z-20 glow-animate`}
+                      className={`h-10 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg relative z-20 ${index <= activeIndex ? 'glow-animate' : ''}`}
                       style={
-                        ({
-                          ...getGlowStyle(cardColors[index % cardColors.length], true),
-                          '--glow-color': cardColors[index % cardColors.length],
-                          '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
-                        } as any) as React.CSSProperties
+                        index <= activeIndex
+                          ? ({
+                            ...getGlowStyle(cardColors[index % cardColors.length], true),
+                            '--glow-color': cardColors[index % cardColors.length],
+                            '--glow-color-alpha': cardColors[index % cardColors.length] + '55',
+                          } as any) as React.CSSProperties
+                          : undefined
                       }
                     >
                       <img
@@ -397,9 +449,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="absolute md:left-1/2 md:-translate-x-1/2 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] z-0"
           >
             <motion.div
-              animate={{ height: ((activeIndex + 1) / data.length) * height, opacity: 1 }}
+              animate={{ height: progressHeight, opacity: 1 }}
               transition={{
-                duration: isMobile ? 1.2 : 0.6,
+                duration: isMobile ? 0.6 : 0.6,
                 ease: 'easeInOut'
               }}
               className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
