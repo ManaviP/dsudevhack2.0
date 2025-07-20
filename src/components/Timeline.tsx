@@ -65,7 +65,7 @@ const StyledWrapper = styled.div`
   }
   .brutal-subscribe__container:hover {
     transform: translate(-5px, -5px);
-    box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.2.5);
   }
   .brutal-subscribe__header {
     background-color: #000;
