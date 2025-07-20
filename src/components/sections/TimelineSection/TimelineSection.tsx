@@ -52,7 +52,7 @@ const timelineData = [
     content: (
       <div>
         <div className="font-semibold text-base md:text-2xl text-white mb-1">The Code War Begins — Hack Like There’s No Tomorrow!</div>
-        <div className="text-sm md:text-lg text-blue-500">12th September</div>
+        <div className="text-sm md:text-lg text-blue-500">12th September 2025</div>
       </div>
     ),
   },
@@ -82,8 +82,7 @@ export const TimelineSection = () => {
       <div className="absolute inset-0 z-0">
         <Boxes />
       </div>
-      <div className="relative z-10 pointer-events-none">
-        <h2 className="text-2xl md:text-5xl font-bold text-white text-center mt-16 mb-2">Timeline</h2>
+      <div className="relative z-10">
         <Timeline data={timelineData} />
       </div>
     </div>
